@@ -1,0 +1,75 @@
+% !TeX encoding = utf8
+
+\documentclass[UTF8]{ctexbook}
+\usepackage{graphicx}
+\usepackage{amssymb}
+
+\title{数理逻辑笔记}
+\author{张东升}
+\date{}
+
+\newtheorem{theorem}{定理}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\tableofcontents
+\thispagestyle{empty}
+\pagenumbering{Roman}
+
+\chapter{前言}
+\thispagestyle{empty}
+\begin{quote}
+	\zihao{-5}\kaishu 长远而言，是观念，因而也正是传播新观念的人，主宰着历史发展的进程。\footnote{Friedrich Hayek}
+\end{quote}
+记录学习过程中的点点滴滴。
+
+\begin{figure}[ht]
+	\includegraphics[width=10cm]{Walle7.jpg}
+\end{figure}
+
+\chapter{公理化形式系统}
+\pagenumbering{arabic}
+\section{形式化推理}
+\subsection{形式化公理}
+\begin{enumerate}
+	\item $A\rightarrow (B\rightarrow A)$
+	\item $(A\rightarrow (B\rightarrow C))\rightarrow ((A\rightarrow B)\rightarrow (A\rightarrow C))$
+	\item $(\neg A\rightarrow \neg B)\rightarrow (B\rightarrow A)$
+\end{enumerate}
+
+\subsection{推理规则}
+$A,A\rightarrow B\vdash A$
+
+\section{定理}
+\subsection{$A\rightarrow A$}
+\begin{enumerate}
+	\item $A\rightarrow ((A\rightarrow A)\rightarrow A)$
+	\item $(A\rightarrow ((A\rightarrow A)\rightarrow A))\rightarrow ((A\rightarrow (A\rightarrow A))\rightarrow (A\rightarrow A))$
+	\item $(A\rightarrow (A\rightarrow A))\rightarrow (A\rightarrow A)$
+	\item $A\rightarrow (A\rightarrow A)$
+	\item $A\rightarrow A$
+\end{enumerate}
+
+\subsection{$A\rightarrow (\neg A\rightarrow B)$}
+\begin{enumerate}
+	\item $\neg A\rightarrow ((\neg B\rightarrow \neg A)\rightarrow (A\rightarrow B))$
+	\item $(\neg A\rightarrow ((\neg B\rightarrow \neg A)\rightarrow (A\rightarrow B)))\rightarrow ((\neg A\rightarrow (\neg B\rightarrow \neg A))\rightarrow (\neg A \rightarrow (A\rightarrow B))$
+	\item $(\neg A\rightarrow (\neg B\rightarrow \neg A))\rightarrow (\neg A \rightarrow (A\rightarrow B)$
+	\item $\neg A\rightarrow (\neg B\rightarrow \neg A)$
+	\item $\neg A\rightarrow (A\rightarrow B)$
+\end{enumerate}
+
+\begin{theorem}
+	演绎定理：若$\Gamma\cup \{A\}\vdash B$，则$\Gamma \vdash (A\rightarrow B)$
+\end{theorem}
+
+\chapter{集合论}
+\section{有序对}
+\subsection{Norbert Wiener有序对}
+	$(a, b):=\{ \{ \varnothing , \{ a\} \} , \{ \{ b\} \} \}$
+
+\bibliography{math}
+
+\end{document}

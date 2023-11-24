@@ -1,0 +1,118 @@
+\chapter{偏序集}
+\section{偏序关系}
+
+\begin{definition}[偏序关系]
+给定集合$S$, ``$\preccurlyeq$''是$S$上的二元关系, 若``$\preccurlyeq$''满足:
+\begin{enumerate}
+	\item 自反性(Reflexive): $\forall a\in S, a\preccurlyeq a$;
+	\item 反对称性(Anti-symmetric): $\forall a,b\in S, a\preccurlyeq b\wedge b\preccurlyeq a\rightarrow a=b$;
+	\item 传递性(Transitive): $\forall a,b,c\in S, a\preccurlyeq b\wedge b\preccurlyeq c\rightarrow a\preccurlyeq c$;
+\end{enumerate}
+则称``$\preccurlyeq$''是$S$上的非严格偏序(Partial order relation)或自反偏序, 称$(S,\preccurlyeq)$为非严格偏序集.
+\end{definition}
+
+\begin{definition}[严格偏序关系]
+	给定集合$S$, ``$\preccurlyeq$''是$S$上的二元关系, 若``$\preccurlyeq$''满足:
+	\begin{enumerate}
+		\item 反自反性(Irreflexive/Anti-reflexive): $\forall a\in S, \neg(a\prec a)$;
+		\item 反对称性(Asymmetric): $\forall a,b\in S, a\prec b\rightarrow\neg(b\prec a)$;
+		\item 传递性(Transitive): $\forall a,b,c\in S, a\prec b\wedge b\prec c\rightarrow a\prec c$;
+	\end{enumerate}
+	则称``$\prec$''是$S$上的严格偏序或反自反偏序, 称$(S,\prec)$为严格偏序集.
+\end{definition}
+
+\begin{proposition}
+	\begin{enumerate}
+		\item 给定集合上的一个非严格偏序``$\preccurlyeq$'', 可以诱导出S上的一个严格偏序``$\prec$'', 只需按如下方式定义: $\forall a,b\in S, (a\prec b\leftrightarrow a\preccurlyeq b \wedge a\neq b)$;
+		\item 给定集合上的一个严格偏序``$\prec$'', 可以诱导出S上的一个非严格偏序``$\preccurlyeq$'', 只需按如下方式定义: $\forall a,b\in S, (a\preccurlyeq b\leftrightarrow a\prec b \vee a=b)$;
+		\item 给定集合上的一个非严格偏序``$\preccurlyeq$'', 其逆关系``$\succcurlyeq$''也是S上的一个非严格偏序;
+		\item 给定集合上的一个严格偏序``$\prec$'', 其逆关系``$\succ$''也是S上的一个非严格偏序.
+	\end{enumerate}
+\end{proposition}
+
+\begin{definition}[全序关系]
+	给定集合$S$, ``$\preccurlyeq$''是$S$上的二元关系, 若``$\preccurlyeq$''满足:
+	\begin{enumerate}
+		\item 自反性(Reflexivity): $\forall a\in S, a\preccurlyeq a$;
+		\item 反对称性(Anti-symmetry): $\forall a,b\in S, a\preccurlyeq b\wedge b\preccurlyeq a\rightarrow a=b$;
+		\item 传递性(Transitivity): $\forall a,b,c\in S, (a\preccurlyeq b\wedge b\preccurlyeq c)\rightarrow (a\preccurlyeq c)$;
+		\item 完全性(Strongly Connected): $\forall a,b\in S, (a\preccurlyeq b\vee b\preccurlyeq a)$;
+	\end{enumerate}
+	则称``$\preccurlyeq$''是$S$上的全序关系(Total order).
+\end{definition}
+
+\begin{definition}[链]
+	给定偏序集合$(S,\preccurlyeq)$, 集合$S$上任一子集如果满足``$\preccurlyeq$''上的全序关系, 则称该子集为链(Chain).
+\end{definition}
+
+\begin{definition}[良序集]
+	给定全序集$(S,\preccurlyeq)$, 如果$S$的任意非空子集存在最小值, 则称$S$为``$\preccurlyeq$''上的良序集(Well ordered set).
+\end{definition}
+
+\section{有限集和无限集}
+\begin{definition}[等势]
+	如果集合$A$和$B$之间存在一一映射, 则称集合$A$和$B$是等势的(Equinumerous), 记作$|A|=|B|$. 如果集合$A$和$B$等势, 也称集合$A$和$B$是等价的(Equivalent), 记作$A\sim B$.
+\end{definition}
+
+\begin{definition}[有限集和无限集的定义1]
+如果集合S和某个集合$N=\{x\in \mathbb{N}|n\in \mathbb{N}\wedge x\leqslant n\}$等势, 则称集合S是有限集(Finite set), 称集合$S$的势(Cardinality)为n. 如果集合$S$不是有限集, 则称集合$S$为无限集(Infinite set).
+\end{definition}
+
+\begin{definition}[有限集和无限集的定义2---戴德金的无限集定义]
+	如果集合$S$能和自身的某个真子集等势, 则称集合S是无限集(Infinite set). 如果集合$S$不是有限集, 则称集集合$S$为有限集(Finite set).
+\end{definition}
+
+\begin{definition}[可数集]
+	如果集合$S$和自然数集等势, 则称集合S是可数集(Countable set).
+\end{definition}
+
+\begin{proposition}
+	设$n$为自然数, 任一无限集去掉$n$个元素仍然是无限集.
+\end{proposition}
+
+\begin{proof}
+	设无限集为$S$. 根据数学归纳法, $S$去掉0个元素就是$S$自身, 是无限集. 设$S$去掉$0-k$个元素是无限集. 令$S$去掉$k+1$个元素得到$S_{k+1}$. 假设在从$S$去掉$k+1$个元素的过程中先去掉$k$个元素得到$S_k$, 然后再从$S_k$中去掉1个元素得到$S_{k+1}$. 根据假设可知$S_k$是无限集. 根据选择公理, 可以从
+\end{proof}
+
+\begin{proposition}
+	任一无限集必然包含一个可数子集.
+\end{proposition}
+
+\begin{proof}
+	设无限集为$S$. 根据选择公理, 存在选择函数$f$, 我们可以从集合$S$中选择一个元素$f(S)$. 令该元素为$a_0$. 设集合$S_1=S\{a_0\}$. 
+\end{proof}
+
+\begin{definition}[势]
+	给定偏序集合$(S,\preccurlyeq)$, 集合$S$上任一子集如果满足``$\preccurlyeq$''上的全序关系, 则称该子集为链(Chain).
+\end{definition}
+
+\begin{proposition}
+	\begin{enumerate}
+		\item 给定集合上的一个非严格偏序``$\preccurlyeq$'', 可以诱导出S上的一个严格偏序``$\prec$'', 只需按如下方式定义: $\forall a,b\in S, (a\prec b\leftrightarrow a\preccurlyeq b \wedge a\neq b)$;
+		\item 给定集合上的一个严格偏序``$\prec$'', 可以诱导出S上的一个非严格偏序``$\preccurlyeq$'', 只需按如下方式定义: $\forall a,b\in S, (a\preccurlyeq b\leftrightarrow a\prec b \vee a=b)$;
+		\item 给定集合上的一个非严格偏序``$\preccurlyeq$'', 其逆关系``$\succcurlyeq$''也是S上的一个非严格偏序;
+		\item 给定集合上的一个严格偏序``$\prec$'', 其逆关系``$\succ$''也是S上的一个非严格偏序.
+	\end{enumerate}
+\end{proposition}
+
+\section{函数}
+\begin{definition}[单射]
+	给定函数$f\colon X\rightarrow Y$. 如果对于任意$a,b\in X$, 如果$a\neq b$, 则$f(a)\neq f(b)$, 那么称函数$f$是单射(Injection), 或者一对一的(One to one).
+\end{definition}
+
+\begin{definition}[满射]
+	给定函数$f\colon X\rightarrow Y$. 如果对于任意$y\in Y$, 存在$x\in A$, 满足$f(x)=y$, 那么称函数$f$是满射(Surjection), 或者是到上(Onto).
+\end{definition}
+
+\begin{definition}[一一映射]
+	如果函数$f$既是单射, 又是满射, 那么称函数$f$是一一映射(Bijection).
+\end{definition}
+
+\section{齐次关系}
+\begin{definition}[齐次关系]
+	定义在集合$S$和自身上的二元关系, 是$S\times S$的子集, 称为$S$上的齐次关系(Homogeneous relation).
+\end{definition}
+
+\begin{definition}[全关系]
+	定义在集合$S$上的齐次关系, 称为全关系, 如果满足以下条件: 给定任意$x\in S$, 存在$y\in S$, $a\ R\ b$成立.
+\end{definition}
