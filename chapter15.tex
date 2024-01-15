@@ -1,0 +1,59 @@
+\chapter{集合的势}
+\section{等势}
+\begin{definition}[等势]
+	如果集合$A$和$B$之间存在一一映射, 则称集合$A$和$B$是等势的(Equinumerous), 记作$|A|=|B|$. 如果集合$A$和$B$等势, 也称集合$A$和$B$是等价的(Equivalent), 记作$A\sim B$.
+\end{definition}
+
+康托定理(Cantor's theorem)指出了集合和它的幂集不等势.
+
+\begin{theorem}[]
+	给定集合$S$, $S$和$\mathscr P(S)$不等势.
+\end{theorem}
+
+\begin{proof}
+	假设集合$S$和$\mathscr P(S)$等势, 那么存在一个从$S$到$\mathscr P(S)$的一一映射, 设该映射为: $f\colon S\rightarrow \mathscr P(S)$. 令$X=\{x\in S\mid x\notin f(x)\}$. $X$是$S$的子集, 因此$X\in \mathscr P(S)$. $f$是从$S$到$\mathscr P(S)$的一一映射, 因此$X$在$S$上存在一个原像$a$, $f(a)=X$.
+
+	假设$a\in X$, 那么$a\notin f(a)$, 而$f(a)=X$, 所以$a\notin X$.
+
+	假设$a\notin X$, 那么$a\in f(a)$, 而$f(a)=X$, 所以$a\in X$.
+
+	所以$a\in X$当且仅当$a\notin X$, 出现矛盾, 所以不存在一个从$S$到$\mathscr P(S)$的一一映射.
+\end{proof}
+
+\section{有限集和无限集}
+\begin{definition}[有限集和无限集的定义1]
+	如果集合S和某个集合$N=\{x\in \mathbb{N}\mid n\in \mathbb{N}\wedge x\leqslant n\}$等势, 则称集合S是有限集(Finite set), 称集合$S$的势(Cardinality)为n. 如果集合$S$不是有限集, 则称集合$S$为无限集(Infinite set).
+\end{definition}
+
+\begin{definition}[有限集和无限集的定义2---戴德金的无限集定义]
+	如果集合$S$能和自身的某个真子集等势, 则称集合S是无限集(Infinite set). 如果集合$S$不是有限集, 则称集集合$S$为有限集(Finite set).
+\end{definition}
+
+\begin{definition}[可数集]
+	如果集合$S$和自然数集等势, 则称集合S是可数集(Countable set).
+\end{definition}
+
+\begin{proposition}
+	设$n$为自然数, 任一无限集去掉$n$个元素仍然是无限集.
+\end{proposition}
+
+\begin{proof}
+	设无限集为$S$. 根据数学归纳法, $S$去掉0个元素就是$S$自身, 是无限集. 设$S$去掉$0-k$个元素是无限集. 令$S$去掉$k+1$个元素得到$S_{k+1}$. 假设在从$S$去掉$k+1$个元素的过程中先去掉$k$个元素得到$S_k$, 然后再从$S_k$中去掉1个元素得到$S_{k+1}$. 根据假设可知$S_k$是无限集. 根据选择公理, 可以从
+\end{proof}
+
+\begin{proposition}
+	任一无限集必然包含一个可数子集.
+\end{proposition}
+
+\begin{proof}
+	设无限集为$S$. 根据选择公理, 存在选择函数$f$, 我们可以从集合$S$中选择一个元素$f(S)$. 令该元素为$a_0$. 设集合$S_1=S\{a_0\}$. 
+\end{proof}
+
+\begin{proposition}
+	给定无穷集合$S$, $S$和$S\times S$等势.
+\end{proposition}
+
+\begin{proof}
+	令$f\colon S\rightarrow S\times S$; $x\mapsto (x,x)$. 对于任意$x\in S$, 存在唯一的元素
+	
+\end{proof}

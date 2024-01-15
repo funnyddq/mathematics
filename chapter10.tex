@@ -1,0 +1,235 @@
+\chapter{传递关系}
+\section{传递集}
+\begin{definition}
+	一个集合$S$被称为是传递的(Transitive), 如果满足下面的条件:
+	
+	\begin{equation}
+		\forall a(a\in S\rightarrow a\subseteq S).
+	\end{equation}
+	
+	传递的集合称为传递集(Transitive set).
+\end{definition}
+
+根据定义可知, 空集是传递集.
+
+\begin{proposition}
+	集合$S$是传递集, 当且仅当:
+	
+	\begin{equation}
+		\forall a\forall b(a\in S\wedge b\in a\rightarrow b\in S).
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	充分性: 给定集合$S$, 对于任意$a\in S$, 对于任意$b\in a$, 由前提可知$b\in S$, 所以$a\subseteq S$. $S$是传递集.
+	
+	必要性: 如果$S$是传递集. 如果$a\in S$, 那么$a\subseteq S$. 因为$b\in a$, 所以$b\in S$.
+\end{proof}
+
+\begin{proposition}
+	集合$S$是传递集, 当且仅当:
+	
+	\begin{equation}
+		\bigcup S\subseteq S.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	充分性: 给定集合$S$, 对于任意$a\in S$, 如果$b\in a$, 那么$b\in \bigcup S$. 由前提可知$\bigcup S\subseteq S$, 所以$b\in S$. $S$是传递集.
+	
+	必要性: 假设$S$是传递集. 对于任意$c\in \bigcup S$, 存在$d\in S$且$c\in d$. $S$是传递集, 所以$c\in S$. 所以$\bigcup S\subseteq S$.
+\end{proof}
+
+\begin{proposition}
+	集合$S$是传递集, 当且仅当:
+	
+	\begin{equation}
+		S\subseteq \mathscr P(S).
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	充分性: 给定集合$S$, 对于任意$a\in S$, $a\in \mathscr P(S)$, $a\subseteq S$. 所以$S$是传递集.
+	
+	必要性: 假设$S$是传递集. 对于任意$a\in S$, $a\subseteq S$, $a\in \mathscr P(S)$. 所以$S\subseteq \mathscr P(S)$.
+\end{proof}
+
+传递集的以上定义方式是等价的. 因此我们可以在证明的时候选择方便的定义.
+
+\begin{proposition}
+	传递集的交集是传递集.
+\end{proposition}
+
+\begin{proof}
+	给定非空集族$\{A_i\mid i\in I\}$, 对于任意$i\in I$, $A_i$都是传递集. 令$S=\bigcap_{i\in I} A_i$. 对于任意$a\in S$, 对于任意$i\in I$, $a\in A_i$, 因此$a\subseteq A_i$. 可以推出$a\subseteq S$. 否则假设$a\nsubseteq S$, 那么存在$b\in a$且$b\notin S$. $b\in a$, 那么对于任意$i$, $b\in A_i$. $b\notin S$, 那么存在$j$, $b\notin A_j$, 这就产生矛盾. 因此$a\subseteq S$. $S$是传递集.
+\end{proof}
+
+\begin{proposition}
+	传递集的并集是传递集.
+\end{proposition}
+
+\begin{proof}
+	给定非空集族$\{A_i\mid i\in I\}$, 对于任意$i\in I$, $A_i$都是传递集. 令$S=\bigcup_{i\in I} A_i$. 对于任意$a\in S$, 存在$i\in I$, $a\in A_i$, 因此$a\subseteq A_i$. 因为$A_i\subseteq S$, 所以$a\subseteq S$. $S$是传递集.
+\end{proof}
+
+\begin{proposition}
+	给定传递集$S$, $\bigcup S$是传递集.
+\end{proposition}
+
+\begin{proof}
+	如果$S$是传递集, 那么$\bigcup S\subseteq S$. 所以$\bigcup \bigcup S\subseteq \bigcup S$. 所以$\bigcup S$是传递集. 以此类推, $\bigcup \bigcup S$, $\bigcup \bigcup \bigcup S$等等都是传递集.
+\end{proof}
+
+\begin{proposition}
+	如果$X,Y$是传递集, 那么$X\cup Y \cup\{X,Y\}$是传递集.
+\end{proposition}
+
+\begin{proof}
+	对于任意$a\in X\cup Y \cup\{X,Y\}$, 如果$a\in X$, 因为$X$是传递集, 所以$a\subseteq X$, 继而$a\subseteq X\cup Y \cup\{X,Y\}$. 同理, 如果$a\in Y$, $a\subseteq X\cup Y \cup\{X,Y\}$. 如果$a=X$, $a\subseteq X\cup Y \cup\{X,Y\}$. 如果$a=Y$, $a\subseteq X\cup Y \cup\{X,Y\}$. 综合以上情况, $a\subseteq X\cup Y \cup\{X,Y\}$. 所以$X\cup Y \cup\{X,Y\}$是传递集.
+\end{proof}
+
+\begin{proposition}
+	给定传递集$S$, $S\cup \bigcup S$是传递集.
+\end{proposition}
+
+传递集的后继是传递集, 但是如果$S$是传递集, $S$不一定是某个传递集的后继. $\varnothing$是个传递集, 但是$\varnothing$不是任何集合的后继.
+
+\begin{proof}
+	如果$S$是传递集, 那么$\bigcup S$是传递集. 两个传递集的并集是传递集, 所以$S\cup \bigcup S$是传递集.
+\end{proof}
+
+\begin{proposition}
+	$S$是传递集当且仅当$\mathscr P(S)$是传递集.
+\end{proposition}
+
+\begin{proof}
+	充分性: 对于任意$a\in S$, $\{a\}\subseteq S$, 所以$\{a\}\in \mathscr P(S)$. 如果$\mathscr P(S)$是传递集, 那么$\{a\}\subseteq \mathscr P(S)$, 所以$a\in \mathscr P(S)$, 继而$a\subseteq S$. 所以$S$是传递集.
+	
+	必要性: 对于任意$a\in S$, $a\subseteq S$. 对任意$b\in \mathscr P(S)$, $b\subseteq S$. 对于任意$c\in b$, $c\in S$. $S$是传递集, 所以$c\subseteq S$, 因而$c\in \mathscr P(S)$. 所以$\mathscr P(S)$是传递集.
+\end{proof}
+
+但是, 如果$S$是传递集, $S$的每个元素不一定是传递集. 如$S=\{\varnothing,\{\varnothing \},\{\{\varnothing\}\}\}$是传递集. 但$\{\{\varnothing\}\}$不是传递集. $S$的每个子集也不一定是传递集. $\{\varnothing,\{\{\varnothing\}\}\}$不是传递集.
+
+注意, 如果$S$是传递集, 这并不意味着``$\in$''是$S$上具备传递性的二元关系. 实际上, 传递集这个名字具备一定的误导性.
+
+\begin{definition}
+	给定集合$X$, 传递闭包是在集合的包含关系上最小的.
+\end{definition}
+
+\begin{definition}
+	给定任意集合$X$, 对任意集合$x\in X$, 定义$S(x)\coloneqq a\cup \{x\}$.
+\end{definition}
+
+\begin{proposition}
+	$S$是集合$X$上的函数.
+\end{proposition}
+
+\begin{proof}
+	对于任意$x\in X$, 根据配对公理, 存在集合$\{x\}$; 根据并集公理, 存在集合$x\cup \{x\}$. 如果存在$y,y' \in X$, 满足$y=x\cup \{x\}$且$y'=x\cup \{x\}$, 那么对于任意$z\in y$, $z\in y'$, 所以$y\subseteq y'$. 同理, 对于任意$z'\in y'$, $z'\in y$, 所以$y'\subseteq y$. 因此$y=y'$. 综上所述, 对于任意$x\in X$, 有且仅有一个$y\in X$, 满足$y=S(x)$, 所以$S$是函数.
+\end{proof}
+
+\begin{proposition}
+	$\bigcup (S\cup \{S\})=S$.
+\end{proposition}
+
+\begin{proof}
+	对于任意$a\in S$, $a\in S\cup \{S\}$. 所以$S\subseteq \bigcup (S\cup \{S\})$.
+	
+	对于任意$a\in S\cup \{S\}$, 可知$a\in S$或$a=S$. 如果$a\in S$, 那么$a\subseteq S$. 如果$a=S$, 那么$a\subseteq S$. 所以$\bigcup (S\cup \{S\})\subseteq S$.
+	
+	$S\subseteq \bigcup (S\cup \{S\})$且$\bigcup (S\cup \{S\})\subseteq S$, 所以$\bigcup (S\cup \{S\})=S$.
+\end{proof}
+
+\begin{proposition}
+	传递集的后继集也是传递集.
+\end{proposition}
+
+\begin{proof}
+	给定任意传递集$S$, $S(S)=S\cup \{S\}$. 因为$\bigcup (S\cup \{S\})=S$, 所以$\bigcup (S\cup \{S\})\subseteq (S\cup \{S\})$. 所以$S\cup \{S\}$也是传递集.
+\end{proof}
+
+\begin{proposition}
+	给定任意非空集合$X$, 如果$X$的每个元素都是传递集, 那么$\bigcap X$也是传递集.
+\end{proposition}
+
+\begin{proof}
+	假设非空集合$X$的每个元素都是传递集. 对于任意$x\in X$, 任意$y\in \bigcap X$, $y\in x$. 因为$x$是传递集, 所以$y\subseteq x$. 对于任意$z\in y$, $z\in x$. 所以$z\in \bigcap X$. 所以$\bigcap X$是传递集.
+\end{proof}
+
+\begin{proposition}
+	给定任意集合$X$, 如果$X$的每个元素都是传递集, 那么$\bigcup X$也是传递集.
+\end{proposition}
+
+\begin{proof}
+	假设$X$的每个元素都是传递集. 如果$X$是空集, $\bigcup X=\varnothing$, $\bigcup X$是传递集. 下面考虑$X$不是空集的情况. 对于任意$y\in \bigcup X$, 存在$x\in X$, $y\in x$. 因为$x$是传递集, 所以$y\subseteq x$. 对于任意$z\in y$, $z\in x$. 所以$z\in \bigcup X$. 所以$\bigcup X$是传递集.
+\end{proof}
+
+\begin{proposition}
+	给定任意非空集合$X$, 如果$X$是传递集, 那么$\varnothing \in X$.
+\end{proposition}
+
+\begin{proof}
+	集合$X$非空, 假设$\varnothing \notin X$. 任选$x\in X$, $x\subseteq X$且$x\neq \varnothing$. 所以存在$y\in x$, 那么$y\in X$. $y\in x\cap X$, 所以$x\cap X\neq \varnothing$. 与正则公理出现矛盾. 所以$\varnothing \in X$.
+\end{proof}
+
+\begin{proposition}
+	给定任意非空集合$X$, 如果$X$是传递集, 那么$\bigcap X=\varnothing$.
+\end{proposition}
+
+\begin{proof}
+	根据前提条件可知, $\varnothing \in X$. 对于任意$x$, $x\notin \varnothing$, 所以$\bigcap X=\varnothing$.
+\end{proof}
+
+\section{配对函数}
+\begin{proposition}
+	$J(m,n)=\frac{1}{2}((m+n)(m+n+1)+2n)$
+\end{proposition}
+
+\begin{proof}
+	$J(m,n)=(1+2+\cdots+(m+n))+n=\frac{1}{2}((m+n)(m+n+1)+2n)$.
+\end{proof}
+
+\section{齐次关系}
+\begin{definition}[齐次关系]
+	定义在集合$S$和自身上的二元关系, 是$S\times S$的子集, 称为$S$上的齐次关系(homogeneous relation). 齐次关系又称为内关系(endorelation).
+\end{definition}
+
+\begin{definition}[全关系]
+	定义在集合$S$上的齐次关系$R$, 称为全关系(Total relation), 如果满足以下条件: 给定任意$x,y\in S$, 满足$xRy$或$yRx$, 或二者皆成立. 上述性质也称为完全性(Totality).
+\end{definition}
+
+根据定义可知, 完全性蕴含自反性, 满足完全性的非严格偏序关系是全序关系, 严格偏序关系不是全序关系.
+
+\begin{definition}[左全关系]
+	定义在集合$S$上的齐次关系$R$, 称为左全关系(Left-total relation), 如果满足以下条件: 给定任意$x\in S$, 存在$y\in S$, 满足$xRy$.
+\end{definition}
+
+\begin{definition}[右全关系]
+	定义在集合$S$上的齐次关系$R$, 称为右全关系(Right-total relation), 如果满足以下条件: 给定任意$y\in S$, 存在$x\in S$, 满足$xRy$.
+\end{definition}
+
+\section{闭包}
+\begin{definition}
+	给定非空集合$X$和$X$上的二元关系$R$, $R$的自反(对称/传递)闭包是$X$上的二元关系$R'$, 且$R'$满足以下条件:
+	\begin{itemize}
+		\item $R'$是自反(对称/传递)的;
+		\item $R\subseteq R'$;
+		\item $X$上任意包含$R$的自反(对称/传递)关系$R''$都满足$R'\subseteq R''$.
+	\end{itemize}
+\end{definition}
+
+给定集合$X$和$X$上的二元关系$R$, 一般将$R$的自反闭包记作$r(R)$, 将$R$的对称闭包记作$s(R)$, 将$R$的传递闭包记作$t(R)$.
+
+\begin{proposition}
+	给定集合$X$和$X$上的二元关系$R$, 则有
+	\begin{itemize}
+		\item $r(R)=R\cup R^0$;
+		\item $s(R)=R\cup R^{-1}$;
+		\item $t(R)=R\cup R^2\cup R^3\cup \cdots$.
+	\end{itemize}
+\end{proposition}
+
+\begin{proof}
+	TBD
+\end{proof}
+

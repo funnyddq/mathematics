@@ -1,0 +1,23 @@
+\chapter{同态和同构}
+\section{同构}
+\begin{proposition}
+	给定任意一个严格线序结构$(S,<_S)$, $S$具备下列性质:
+	\begin{enumerate}[itemindent=1em]
+		\item 对于任意$x\in S$, 都存在$y\in S$, 满足$x<y$;
+		\item $S$的每个非空子集都有关于$<_S$的最小元;
+		\item $S$的每个非空有界子集都有关于$<_S$的最大元,
+	\end{enumerate}
+	那么$(S,<_S)$和$(\omega,<_\omega)$同构.
+\end{proposition}
+
+\begin{proof}
+	我们使用递归定理构造关于$(S,<_S)$和$(\omega,<_\omega)$的同构映射$f$. 设$m$是$S$关于$<_S$的最小元, $g(x)$是$\{y\in S\mid x<_Sy\}$的最小元. 根据前提可知, $\{y\in S\mid x<_Sy\}$是$S$的非空子集, $S$的每个非空子集都有关于$<_S$的最小元. 线序结构的最小元是唯一的, 所以$g(x)$是良构的.
+
+	定义函数$f\colon \omega\rightarrow S$如下:
+	\begin{enumerate}[itemindent=1em]
+		\item $f(0)=m$;
+		\item $f(S(n))=g(f(n))$.
+	\end{enumerate}
+
+	根据递归定理, 对于任意$n\in \omega$, $f(n)<_Sf(S(n))$. 根据数学归纳法还可以进一步推出, 对于任意$m,n\in \omega$, 如果$m<_\omega n$, 那么$f(m)<_Sf(n)$. 如果$m\neq n$, 那么$f(m)\neq f(n)$. $f$是单射. 假设$f$不是满射. 令$A=\{x\in S\mid \forall n\in \omega(f(n)\neq x)\}$. $f$不是满射, 所以$A$是$S$的非空子集. $A$存在关于$<_S$的最小元, 设该最小元为$A_m$. 令$B=\{x\in S\mid x<_SA_m\}$. $m\in B$. $B$是$S$的非空子集. $A_m$是$B$的上界. 根据假设, $B$有关于$<_S$的最大元, 设该最大元为$B_M$. 因为存在$a\in \omega$, $f(a)=B_M$. $f(S(a))=g(f(a))$. $g(f(a))\in S$, 且存在$S(a)$是$g(f(a))$在$f$下的原像. $B_M<_Sg(f(a))$, $g(f(a))\notin B$. $g(f(a))\notin A$. 所以$g(f(a))$是$A$的上界. $A_m\in A$, 所以$A_m<_Sg(f(a))$. $f(a)<_SA_m$. $g(f(a)<_SA_m$或$g(f(a)=A_m$. 出现矛盾. 所以$f$是满射. 因此$f$是从$\omega$到$S$的一一映射. 如果$m<_\omega n$, 那么$f(m)<_Sf(n)$, 所以$(S,<_S)$和$(\omega,<_\omega)$同构.
+\end{proof}

@@ -8,10 +8,13 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{emptypage}
+\usepackage{enumitem}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
 \usepackage{geometry}
 \usepackage{lipsum}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
 \usepackage{xpatch}
 
 \geometry{left=3cm,right=2cm,top=3cm,bottom=2cm}
@@ -33,19 +36,21 @@
 \author{张东升}
 \date{}
 
-
 \makeatletter
 \xpatchcmd{\@thm}{\thm@headpunct{.}}{\thm@headpunct{}}{}{}
 \makeatother
 
 \newtheorem{axiom}{公理}[chapter]
 \newtheorem{theorem}{定理}[section]
-
 \newtheorem{lemma}{引理}[section]
-\newtheorem{corollary}{系}[section]
+\newtheorem{corollary}{推论}[section]
 \newtheorem{definition}{定义}[section]
 \newtheorem{proposition}{命题}[section]
 \newtheorem{example}{例}[section]
+
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\fld}{fld}
 
 \begin{document}
 
@@ -60,6 +65,13 @@
 \input{./chapter01}
 \input{./chapter02}
 \input{./chapter03}
+\input{./chapter04}
+\input{./chapter05}
+\input{./chapter06}
+\input{./chapter10}
+\input{./chapter15}
+\input{./chapter16}
+\input{./chapter17}
 \input{./chapter99}
 
 \backmatter

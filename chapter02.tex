@@ -1,131 +1,647 @@
-\chapter{偏序集}
-\section{偏序关系}
-
-\begin{definition}[偏序关系]
-给定集合$S$, ``$\preccurlyeq$''是$S$上的二元关系, 若``$\preccurlyeq$''满足:
-\begin{enumerate}
-	\item 自反性(Reflexive): $\forall a\in S, a\preccurlyeq a$;
-	\item 反对称性(Anti-symmetric): $\forall a,b\in S, a\preccurlyeq b\wedge b\preccurlyeq a\rightarrow a=b$;
-	\item 传递性(Transitive): $\forall a,b,c\in S, a\preccurlyeq b\wedge b\preccurlyeq c\rightarrow a\preccurlyeq c$;
-\end{enumerate}
-则称``$\preccurlyeq$''是$S$上的非严格偏序(Partial order relation)或自反偏序, 称$(S,\preccurlyeq)$为非严格偏序集.
-\end{definition}
-
-\begin{definition}[严格偏序关系]
-	给定集合$S$, ``$\preccurlyeq$''是$S$上的二元关系, 若``$\preccurlyeq$''满足:
-	\begin{enumerate}
-		\item 反自反性(Irreflexive/Anti-reflexive): $\forall a\in S, \neg(a\prec a)$;
-		\item 反对称性(Asymmetric): $\forall a,b\in S, a\prec b\rightarrow\neg(b\prec a)$;
-		\item 传递性(Transitive): $\forall a,b,c\in S, a\prec b\wedge b\prec c\rightarrow a\prec c$;
-	\end{enumerate}
-	则称``$\prec$''是$S$上的严格偏序或反自反偏序, 称$(S,\prec)$为严格偏序集.
-\end{definition}
-
+\chapter{集合论基础}
+\section{并集}
 \begin{proposition}
-	\begin{enumerate}
-		\item 给定集合上的一个非严格偏序``$\preccurlyeq$'', 可以诱导出S上的一个严格偏序``$\prec$'', 只需按如下方式定义: $\forall a,b\in S, (a\prec b\leftrightarrow a\preccurlyeq b \wedge a\neq b)$;
-		\item 给定集合上的一个严格偏序``$\prec$'', 可以诱导出S上的一个非严格偏序``$\preccurlyeq$'', 只需按如下方式定义: $\forall a,b\in S, (a\preccurlyeq b\leftrightarrow a\prec b \vee a=b)$;
-		\item 给定集合上的一个非严格偏序``$\preccurlyeq$'', 其逆关系``$\succcurlyeq$''也是S上的一个非严格偏序;
-		\item 给定集合上的一个严格偏序``$\prec$'', 其逆关系``$\succ$''也是S上的一个非严格偏序.
-	\end{enumerate}
-\end{proposition}
-
-\begin{definition}[全序关系]
-	给定集合$S$, ``$\preccurlyeq$''是$S$上的二元关系, 若``$\preccurlyeq$''满足:
-	\begin{enumerate}
-		\item 自反性(Reflexivity): $\forall a\in S, a\preccurlyeq a$;
-		\item 反对称性(Anti-symmetry): $\forall a,b\in S, a\preccurlyeq b\wedge b\preccurlyeq a\rightarrow a=b$;
-		\item 传递性(Transitivity): $\forall a,b,c\in S, (a\preccurlyeq b\wedge b\preccurlyeq c)\rightarrow (a\preccurlyeq c)$;
-		\item 完全性(Strongly Connected): $\forall a,b\in S, (a\preccurlyeq b\vee b\preccurlyeq a)$;
-	\end{enumerate}
-	则称``$\preccurlyeq$''是$S$上的全序关系(Total order).
-\end{definition}
-
-\begin{definition}[链]
-	给定偏序集合$(S,\preccurlyeq)$, 集合$S$上任一子集如果满足``$\preccurlyeq$''上的全序关系, 则称该子集为链(Chain).
-\end{definition}
-
-\begin{definition}[良序集]
-	给定全序集$(S,\preccurlyeq)$, 如果$S$的任意非空子集存在最小值, 则称$S$为``$\preccurlyeq$''上的良序集(Well ordered set).
-\end{definition}
-
-\section{有限集和无限集}
-\begin{definition}[等势]
-	如果集合$A$和$B$之间存在一一映射, 则称集合$A$和$B$是等势的(Equinumerous), 记作$|A|=|B|$. 如果集合$A$和$B$等势, 也称集合$A$和$B$是等价的(Equivalent), 记作$A\sim B$.
-\end{definition}
-
-\begin{definition}[有限集和无限集的定义1]
-如果集合S和某个集合$N=\{x\in \mathbb{N}|n\in \mathbb{N}\wedge x\leqslant n\}$等势, 则称集合S是有限集(Finite set), 称集合$S$的势(Cardinality)为n. 如果集合$S$不是有限集, 则称集合$S$为无限集(Infinite set).
-\end{definition}
-
-\begin{definition}[有限集和无限集的定义2---戴德金的无限集定义]
-	如果集合$S$能和自身的某个真子集等势, 则称集合S是无限集(Infinite set). 如果集合$S$不是有限集, 则称集集合$S$为有限集(Finite set).
-\end{definition}
-
-\begin{definition}[可数集]
-	如果集合$S$和自然数集等势, 则称集合S是可数集(Countable set).
-\end{definition}
-
-\begin{proposition}
-	设$n$为自然数, 任一无限集去掉$n$个元素仍然是无限集.
+	给定集合$A$和$B$, 如果$A\subseteq B$, 那么$\bigcup A\subseteq \bigcup B$.
 \end{proposition}
 
 \begin{proof}
-	设无限集为$S$. 根据数学归纳法, $S$去掉0个元素就是$S$自身, 是无限集. 设$S$去掉$0-k$个元素是无限集. 令$S$去掉$k+1$个元素得到$S_{k+1}$. 假设在从$S$去掉$k+1$个元素的过程中先去掉$k$个元素得到$S_k$, 然后再从$S_k$中去掉1个元素得到$S_{k+1}$. 根据假设可知$S_k$是无限集. 根据选择公理, 可以从
+	对于任意$x\in \bigcup A$, 存在$y\in A$, $x\in y$. 因为$A\subseteq B$, 所以$y\in B$, 所以$x\in \bigcup B$, 所以$\bigcup A\subseteq \bigcup B$.
 \end{proof}
 
 \begin{proposition}
-	任一无限集必然包含一个可数子集.
+	给定集合$A$和$B$, $\bigcup (A\cup B)=(\bigcup A)\cup (\bigcup B)$.
 \end{proposition}
 
 \begin{proof}
-	设无限集为$S$. 根据选择公理, 存在选择函数$f$, 我们可以从集合$S$中选择一个元素$f(S)$. 令该元素为$a_0$. 设集合$S_1=S\{a_0\}$. 
+	对于任意$x\in \bigcup (A\cup B)$, 存在$y\in (A\cup B)$, $x\in y$. $y\in A$或$y\in B$. 如果$y\in A$, 那么$x\in \bigcup A$. 如果$y\in B$, 那么$x\in \bigcup B$. 所以$x\in (\bigcup A)\cup (\bigcup B)$. 对于任意$x\in (\bigcup A)\cup (\bigcup B)$, $x\in \bigcup A$或$x\in \bigcup B$. 如果$x\in \bigcup A$, 那么存在$y\in A$, $x\in y$. 如果$y\in A$, 那么$y\in A\cup B$. 所以$x\in \bigcup (A\cup B)$. 如果$x\in \bigcup B$, 那么存在$y\in B$, $x\in y$. 如果$y\in B$, 那么$y\in A\cup B$. 所以$x\in \bigcup (A\cup B)$. 综合以上情况, $\bigcup (A\cup B)=(\bigcup A)\cup (\bigcup B)$.
 \end{proof}
 
-\begin{definition}[势]
-	给定偏序集合$(S,\preccurlyeq)$, 集合$S$上任一子集如果满足``$\preccurlyeq$''上的全序关系, 则称该子集为链(Chain).
-\end{definition}
+根据并集的定义可知, $\bigcup \{\varnothing\}=\varnothing$, $\bigcup \varnothing=\varnothing$.
 
 \begin{proposition}
-	\begin{enumerate}
-		\item 给定集合上的一个非严格偏序``$\preccurlyeq$'', 可以诱导出S上的一个严格偏序``$\prec$'', 只需按如下方式定义: $\forall a,b\in S, (a\prec b\leftrightarrow a\preccurlyeq b \wedge a\neq b)$;
-		\item 给定集合上的一个严格偏序``$\prec$'', 可以诱导出S上的一个非严格偏序``$\preccurlyeq$'', 只需按如下方式定义: $\forall a,b\in S, (a\preccurlyeq b\leftrightarrow a\prec b \vee a=b)$;
-		\item 给定集合上的一个非严格偏序``$\preccurlyeq$'', 其逆关系``$\succcurlyeq$''也是S上的一个非严格偏序;
-		\item 给定集合上的一个严格偏序``$\prec$'', 其逆关系``$\succ$''也是S上的一个非严格偏序.
-	\end{enumerate}
-\end{proposition}
-
-\section{函数}
-\begin{definition}[单射]
-	给定函数$f\colon X\rightarrow Y$. 如果对于任意$a,b\in X$, 如果$a\neq b$, 则$f(a)\neq f(b)$, 那么称函数$f$是单射(Injection), 或者一对一的(One to one).
-\end{definition}
-
-\begin{definition}[满射]
-	给定函数$f\colon X\rightarrow Y$. 如果对于任意$y\in Y$, 存在$x\in A$, 满足$f(x)=y$, 那么称函数$f$是满射(Surjection), 或者是到上(Onto).
-\end{definition}
-
-\begin{definition}[一一映射]
-	如果函数$f$既是单射, 又是满射, 那么称函数$f$是一一映射(Bijection).
-\end{definition}
-
-\section{齐次关系}
-\begin{definition}[齐次关系]
-	定义在集合$S$和自身上的二元关系, 是$S\times S$的子集, 称为$S$上的齐次关系(Homogeneous relation).
-\end{definition}
-
-\begin{definition}[全关系]
-	定义在集合$S$上的齐次关系, 称为全关系, 如果满足以下条件: 给定任意$x\in S$, 存在$y\in S$, $a\ R\ b$成立.
-\end{definition}
-
-\begin{definition}[支配]
-	给定集合$A$和$B$, 称$A$被$B$支配, 当且仅当存在一个从$A$到$B$的单射.
-\end{definition}
-
-\begin{proposition}
-	给定集合$A$和$B$, $A$被$B$支配, 当且仅当$|A|\leqslant|B|$.
+	给定任意集合$A$和非空集合$B$, $A\cup (\bigcap B)=\bigcap \{A\cup b\mid b\in B\}$.
 \end{proposition}
 
 \begin{proof}
-	充分性: 如果$|A|\leqslant|B|$, 那么存在一个从$A$到$B$的一一映射或单射. 一一映射也是单射, 所以这两种情况都存在一个从$A$到$B$的单射.
-	必要性: 如果$A$被$B$支配, 那么存在一个从$A$到$B$的单射, 所以$|A|<|B|$.
+	对于任意$x\in A\cup (\bigcap B)$, $x\in A$或$x\in \bigcap B$. 如果$x\in A$, 那么对于任意$b\in B$, $x\in A\cup b$. 所以$x\in \bigcap \{A\cup b\mid b\in B\}$. 如果$x\in \bigcap B$, 那么对于任意$b\in B$, $x\in b$, $x\in A\cup b$. 所以$x\in \bigcap \{A\cup b\mid b\in B\}$. 综合以上两种情况, $A\cup (\bigcap B)\subseteq \bigcap \{A\cup b\mid b\in B\}$.
+
+	对于任意$x\in \bigcap \{A\cup b\mid b\in B\}$, 对于任意$b\in B$, $x\in A\cup b$. 如果$x\in A$, 那么$x\in A\cup (\bigcap B)$. 如果$x\notin A$, 对于任意任意$b\in B$, $x\in b$. 所以$x\in \bigcap B$. 因此$x\in A\cup (\bigcap B)$. $\bigcap \{A\cup b\mid b\in B\}\subseteq A\cup (\bigcap B)$.
+
+	所以$A\cup (\bigcap B)=\bigcap \{A\cup b\mid b\in B\}$.
 \end{proof}
+
+\begin{proposition}
+	给定任意集合$A$和非空集合$B$, $A\cap (\bigcup B)=\bigcup \{A\cap b\mid b\in B\}$.
+\end{proposition}
+
+\begin{proof}
+	对于任意$x\in A\cap (\bigcup B)$, $x\in A$且$x\in \bigcup B$. 所以对于任意$b\in B$, $x\in b$, $x\in A\cap b$. 所以$x\in \bigcup \{A\cap b\mid b\in B\}$. $A\cap (\bigcup B)\subseteq \bigcup \{A\cap b\mid b\in B\}$.
+	
+	对于任意$x\in \bigcup \{A\cap b\mid b\in B\}$, 存在$b\in B$, $x\in A\cap b$. 所以$x\in A$. 存在$b\in B$, $x\in b$, 所以$x\in \bigcup B$. 所以$x\in A\cap (\bigcup B)$. $\bigcup \{A\cap b\mid b\in B\}\subseteq A\cap (\bigcup B)$.
+	
+	所以$A\cap (\bigcup B)=\bigcup \{A\cap b\mid b\in B\}$.
+\end{proof}
+
+这两个命题是德$\cdot$摩根律的推广.
+
+\section{交集}
+\begin{proposition}
+	给定非空集合$A$, $\bigcap A\subseteq \bigcup A$.
+\end{proposition}
+
+\begin{proof}
+	TBD
+\end{proof}
+
+\begin{proposition}
+	给定非空集合$A$和$B$, 如果$A\subseteq B$, 那么$\bigcap A\subseteq \bigcap B$.
+\end{proposition}
+
+\begin{proof}
+	对于任意$x\in \bigcap A$, 存在$y\in A$, $x\in y$. 因为$A\subseteq B$, 所以$y\in B$, 所以$x\in \bigcap B$, 所以$\bigcap A\subseteq \bigcap B$.
+\end{proof}
+
+\begin{proposition}
+	给定非空集合$A$和$B$, $\bigcap (A\cap B)=(\bigcap A)\cap (\bigcap B)$.
+\end{proposition}
+
+\begin{proof}
+	对于任意$x\in \bigcap (A\cap B)$, 存在$y\in (A\cap B)$, $x\in y$. $y\in A$且$y\in B$. 所以$x\in \bigcap A$且$x\in \bigcap B$, $x\in (\bigcap A)\cap (\bigcap B)$. 所以$\bigcap (A\cap B)\subseteq (\bigcap A)\cap (\bigcap B)$. 对于任意$x\in (\bigcap A)\cap (\bigcap B)$, $x\in \bigcap A$且$x\in \bigcap B$. 对于任意$y\in A$, $x\in y$. 对于任意$y\in A\cap B$, $y\in A$, $x\in y$, 所以$x\in \bigcap (A\cap B)$. 所以$(\bigcap A)\cap (\bigcap B)\subseteq \bigcap (A\cap B)$. 所以$\bigcap (A\cap B)=(\bigcap A)\cap (\bigcap B)$.
+\end{proof}
+
+\section{补集}
+\subsection{相对补}
+\begin{definition}
+	给定集合$A$和$B$, 称集合$\{x\in A\mid x\notin B\}$为$B$对于$A$的相对补集, 记为$A\setminus B$.
+\end{definition}
+
+给定集合$A$, 在不指定全集$U$的情况下, $\overline A$并不是一个集合. 否则根据并集公理, $A\cup \overline A$就是一个无所不包的集合. 正则公理已经否定了这个无所不包的集合的存在性. 我们在讨论绝对补的时候, 默认存在一个包含了我们所要讨论集合的全集$U$的存在.
+
+规定相对补运算符的优先级高于逻辑运算符, 高于$\in$运算符. 规定相对补运算符为左结合, $A\setminus B\setminus C=(A\setminus B)\setminus C$.
+
+\begin{proposition}
+	$A\setminus B\setminus C=(A\setminus B)\cap (A\setminus C)$
+\end{proposition}
+
+\begin{proof}
+	$\begin{aligned}[t]
+		x\in A\setminus B\setminus C & \leftrightarrow x\in A\setminus B\wedge x\notin C \\
+		& \leftrightarrow x\in A\wedge x\notin B\wedge x\notin C \\
+		& \leftrightarrow x\in A\wedge x\notin B\wedge x\in A\wedge x\notin C \\
+		& \leftrightarrow (x\in A\wedge x\notin B)\wedge (x\in A\wedge x\notin C) \\
+		& \leftrightarrow x\in A\setminus B\wedge x\in A\setminus C \\
+		& \leftrightarrow x\in (A\setminus B)\cap (A\setminus C)
+	\end{aligned}$
+	
+	所以$(A\setminus B)\setminus C=(A\setminus B)\cap (A\setminus C)$.
+\end{proof}
+
+\begin{proposition}
+	$(A\setminus B)\setminus C=A\setminus (B\cup C)=(A\setminus C)\setminus B$
+\end{proposition}
+
+\begin{proof}
+	$\begin{aligned}[t]
+		x\in (A\setminus B)\setminus C & \leftrightarrow x\in (A\setminus B)\wedge x\notin C \\
+		& \leftrightarrow x\in A\wedge x\notin B\wedge x\notin C \\
+		& \leftrightarrow x\in A\wedge \neg (x\in B\vee x\in C) \\
+		& \leftrightarrow x\in A\wedge \neg (x\in B\cup C) \\
+		& \leftrightarrow x\in A\setminus (B\cup C) \\
+		& \leftrightarrow x\in A\wedge x\notin C\wedge x\notin B \\
+		& \leftrightarrow x\in A\setminus C\wedge x\notin B \\
+		& \leftrightarrow x\in (A\setminus C)\setminus B
+	\end{aligned}$
+	
+	所以$(A\setminus B)\setminus C=A\setminus (B\cup C)=(A\setminus C)\setminus B$.
+\end{proof}
+
+\begin{proposition}
+	$A\setminus (B\setminus C)=(A\setminus B)\cup (A\cap C)$
+\end{proposition}
+
+\begin{proof}
+	$\begin{aligned}[t]
+		x\in (A\setminus (B\setminus C) & \leftrightarrow x\in A\wedge x\notin(B\setminus C) \\
+		& \leftrightarrow x\in A\wedge \neg x\in(B\setminus C) \\
+		& \leftrightarrow x\in A\wedge \neg (x\in B\wedge x\notin C) \\
+		& \leftrightarrow x\in A\wedge (x\notin B\vee x\in C) \\
+		& \leftrightarrow (x\in A\wedge x\notin B)\vee (x\in A\wedge x\in C) \\
+		& \leftrightarrow x\in A\setminus B\vee x\in A\cap C \\
+		& \leftrightarrow x\in (A\setminus B)\cup (A\cap C)
+	\end{aligned}$
+	
+	所以$(A\setminus B)\setminus C=(A\setminus B)\cap (A\setminus C)$.
+\end{proof}
+
+\begin{proposition}
+	$(A\setminus B)\cup C=(A\cup C)\setminus (B\setminus C)$
+\end{proposition}
+
+\begin{proof}
+	$\begin{aligned}[t]
+		x\in (A\setminus B)\cup C & \leftrightarrow x\in A\setminus B\vee x\in C \\
+		& \leftrightarrow (x\in A\wedge x\notin B)\vee x\in C \\
+		& \leftrightarrow (x\in A\vee x\in C)\wedge (x\notin B\vee x\in C) \\
+		& \leftrightarrow (x\in A\vee x\in C)\wedge \neg(x\in B\wedge x\notin C) \\
+		& \leftrightarrow (x\in A\cup C)\wedge \neg(x\in B\setminus C) \\
+		& \leftrightarrow x\in (A\cup C)\setminus (B\setminus C)
+	\end{aligned}$
+	
+	所以$(A\setminus B)\cup C=(A\cup C)\setminus (B\setminus C)$.
+\end{proof}
+
+\begin{proposition}
+	$(A\setminus B)\cap C=A\cap (C\setminus B)$
+\end{proposition}
+
+\begin{proof}
+	$\begin{aligned}[t]
+		x\in (A\setminus B)\cap C & \leftrightarrow x\in A\setminus B\wedge x\in C \\
+		& \leftrightarrow x\in A\wedge x\notin B\wedge x\in C \\
+		& \leftrightarrow x\in A\wedge (x\in C\wedge x\notin B) \\
+		& \leftrightarrow x\in A\wedge x\in C\setminus B \\
+		& \leftrightarrow x\in A\cap (C\setminus B)
+	\end{aligned}$
+	
+	所以$(A\setminus B)\cap C=A\cap (C\setminus B)$.
+\end{proof}
+
+\begin{proposition}
+	$(A\setminus B)\cap C=(A\cap C)\setminus B$
+\end{proposition}
+
+\begin{proof}
+	$\begin{aligned}[t]
+		x\in (A\setminus B)\cap C & \leftrightarrow x\in A\setminus B\wedge x\in C \\
+		& \leftrightarrow x\in A\wedge x\in C\wedge x\notin B \\
+		& \leftrightarrow x\in A\cap C\wedge x\notin B \\
+		& \leftrightarrow x\in (A\cap C)\setminus B
+	\end{aligned}$
+	
+	所以$(A\setminus B)\cap C=(A\cap C)\setminus B$.
+\end{proof}
+
+\begin{proposition}
+	$(A\setminus B)\cap C=(A\cap C)\setminus (B\cap C)$\quad ``$\setminus$''对``$\cap$''的分配律
+\end{proposition}
+
+\begin{proof}
+	$\begin{aligned}[t]
+		x\in (A\setminus B)\cap C & \leftrightarrow x\in A\setminus B\wedge x\in C \\
+		& \leftrightarrow x\in A\wedge x\notin B\wedge x\in C \\
+		& \leftrightarrow x\in A\wedge x\in C\wedge x\notin B \\
+		& \leftrightarrow x\in A\wedge x\in C\wedge (x\notin B\vee x\notin C) \\
+		& \leftrightarrow x\in A\wedge x\in C\wedge \neg(x\in B\wedge x\in C) \\
+		& \leftrightarrow x\in A\cap C\wedge \neg(x\in B\cap C) \\
+		& \leftrightarrow x\in (A\cap C)\setminus (B\cap C)
+	\end{aligned}$
+	
+	所以$(A\setminus B)\cap C=(A\setminus B)\cap (A\setminus C)$.
+\end{proof}
+
+\begin{proposition}
+	$A\cup (B\setminus A)=A\cup B$
+\end{proposition}
+
+\begin{proof}
+	TBD
+\end{proof}
+
+\begin{proposition}
+	$A\setminus B=A\setminus (A\cap B)$
+\end{proposition}
+
+\begin{proof}
+	TBD
+\end{proof}
+
+\begin{proposition}
+	$A\cap (B\setminus C)=A\setminus (A\cap B)$
+\end{proposition}
+
+\begin{proof}
+	TBD
+\end{proof}
+
+\subsection{绝对补}
+\begin{definition}
+	给定集合$U$, 称$U\setminus A$为$A$在$U$中的绝对补, 记为$A^U$, 国标记为$\complement_UA$; 称$U$为全集. 在不引起歧义的情况下, $A^U$可以记为$\overline A$.
+\end{definition}
+
+\subsection{对称差}
+\begin{definition}
+	给定集合$A$和$B$, 称集合$(A\setminus B)\cup (B\setminus A)$为$A$和$B$的对称差, 记为$A\bigtriangleup B$.
+\end{definition}
+
+\begin{proposition}
+	$A\bigtriangleup B=(A\cup B)\setminus (A\cap B)$
+\end{proposition}
+
+\begin{proof}
+	$\begin{aligned}[t]
+		x\in A\bigtriangleup B & \leftrightarrow x\in (A\setminus B)\cup(B\setminus A) \\
+		& \leftrightarrow x\in (A\setminus B)\vee x\in (B\setminus A) \\
+		& \leftrightarrow (x\in A\wedge x\notin B)\vee (x\in B\wedge x\notin A) \\
+		& \leftrightarrow ((x\in A\wedge x\notin B)\vee x\in B)\wedge ((x\in A\wedge x\notin B)\vee x\notin A) \\
+		& \leftrightarrow ((x\in A\vee x\in B)\wedge (x\notin B\vee x\in B))\wedge ((x\in A\vee x\notin A)\wedge (x\notin B\vee x\notin A)) \\
+		& \leftrightarrow (x\in A\vee x\in B)\wedge (x\notin B\vee x\notin A) \\
+		& \leftrightarrow x\in (A\cup B)\wedge \neg (x\in B\wedge x\in A) \\
+		& \leftrightarrow x\in (A\cup B)\wedge \neg (x\in B\cap A) \\
+		& \leftrightarrow x\in (A\cup B)\wedge \neg (x\in A\cap B) \\
+		& \leftrightarrow x\in (A\cup B)\setminus (A\cap B)
+	\end{aligned}$
+
+	所以$A\bigtriangleup B=(A\cup B)\setminus (A\cap B)$.
+\end{proof}
+
+\begin{proposition}
+	$(A\bigtriangleup B)\bigtriangleup C=A\bigtriangleup (B\bigtriangleup C)$
+\end{proposition}
+
+\begin{proof}
+	$\begin{aligned}[t]
+		(A\bigtriangleup B)\bigtriangleup C & =((A\bigtriangleup B)\setminus C)\cup (C\setminus (A\bigtriangleup B)) \\
+		& =(((A\setminus B)\cup (B\setminus A))\setminus C)\cup (C\setminus ((A\cup B)\setminus (A\cap B))) \\
+		& =(A\setminus B\setminus C)\cup (B\setminus A\setminus C)\cup (C\setminus (A\cup B))\cup (C\cap (A\cap B)) \\
+		& =(A\setminus B\setminus C)\cup (B\setminus A\setminus C)\cup (C\setminus A\setminus B)\cup (A\cap B\cap C) \\
+		& =(B\setminus C\setminus A)\cup (C\setminus B\setminus A)\cup (A\setminus B\setminus C))\cup (A\cap B\cap C) \\
+		& =(B\setminus C\setminus A)\cup (C\setminus B\setminus A)\cup (A\setminus (B\cup C))\cup (A\cap (C\cap B)) \\
+		& =(((B\setminus C)\cup (C\setminus B))\setminus A)\cup (A\setminus ((B\cup C)\setminus (C\cap B))) \\
+		& =((B\bigtriangleup C)\setminus A)\cup (A\setminus (B\bigtriangleup C)) \\
+		& =(B\bigtriangleup C)\bigtriangleup A \\
+		& =A\bigtriangleup (B\bigtriangleup C)
+	\end{aligned}$
+
+	所以$(A\bigtriangleup B)\bigtriangleup C=A\bigtriangleup (B\bigtriangleup C)$.
+\end{proof}
+
+\begin{proposition}
+	$A\cap (B\bigtriangleup C)=(A\cap B)\bigtriangleup (A\cap C)$
+\end{proposition}
+
+\begin{proof}
+	$\begin{aligned}[t]
+		A\cap (B\bigtriangleup C) & =A\cap ((B\setminus C)\cup (C\setminus B)) \\
+		& =(A\cap (B\setminus C))\cup (A\cap (C\setminus B)) \\
+		& =((A\cap B)\setminus (A\cap C))\cup ((A\cap C)\setminus (A\cap B)) \\
+		& =(A\cap B)\bigtriangleup (A\cap C)
+	\end{aligned}$
+
+	所以$A\cap (B\bigtriangleup C)=(A\cap B)\bigtriangleup (A\cap C)$.
+\end{proof}
+
+\begin{proposition}
+	$A\bigtriangleup (A\bigtriangleup B)=B$
+\end{proposition}
+
+\begin{proof}
+	$\begin{aligned}[t]
+		A\bigtriangleup (A\bigtriangleup B) & =(A\bigtriangleup A)\bigtriangleup B \\
+		& =\varnothing \bigtriangleup B \\
+		& =B
+	\end{aligned}$
+	
+	所以$A\bigtriangleup (A\bigtriangleup B)=B$.
+\end{proof}
+
+\begin{proposition}
+	$A\bigtriangleup B=C\rightarrow A=C\bigtriangleup B$
+\end{proposition}
+
+\begin{proof}
+	$\begin{aligned}[t]
+		A\bigtriangleup B=C & \rightarrow A\bigtriangleup B\bigtriangleup B=C\bigtriangleup B \\
+		& \rightarrow A\bigtriangleup (B\bigtriangleup B)=C\bigtriangleup B \\
+		& \rightarrow A\bigtriangleup \varnothing=C\bigtriangleup B \\
+		& \rightarrow A=C\bigtriangleup B \\
+	\end{aligned}$
+	
+	所以$A\bigtriangleup B=C\rightarrow A=C\bigtriangleup B$.
+\end{proof}
+
+\section{集合的基本性质}
+\begin{theorem}
+	给定集合$A$, $B$和$C$, 如果$A\subseteq B$且$B\subseteq C$, 那么$A\subseteq C$.
+\end{theorem}
+
+\begin{proof}
+	假设$A\subseteq B$且$B\subseteq C$. 因为$A\subseteq B$, 所以对于任意$x\in A$, $x\in B$. 因为$B\subseteq C$, 所以对于任意$x\in B$, $x\in C$. 因此对于任意$x\in A$, $x\in C$, 所以$A\subseteq C$.
+\end{proof}
+
+\begin{proposition}
+	给定集合$A$和$B$, $A\cup B=B\cup A$.
+\end{proposition}
+
+\begin{proof}
+	对于任意$x\in A\cup B$, $x\in A$或$x\in B$, 所以$x\in B$或$x\in A$, 因此$x\in B\cup A$, 所以$A\cup B\subseteq B\cup A$. 对于任意$x\in B\cup A$, $x\in B$或$x\in A$, 所以$x\in A$或$x\in B$, 因此$x\in A\cup B$. 因此$B\cup A\subseteq A\cup B$, 所以$B\cup A\subseteq A\cup B$. 所以$A\cup B=B\cup A$.
+\end{proof}
+
+\begin{proposition}
+	给定集合$A$和$B$, $A\cap B=B\cap A$.
+\end{proposition}
+
+\begin{proof}
+	对于任意$x\in A\cap B$, $x\in A$且$x\in B$, 所以$x\in B$且$x\in A$, 因此$x\in B\cap A$, 所以$A\cap B\subseteq B\cap A$. 对于任意$x\in B\cap A$, $x\in B$且$x\in A$, 所以$x\in A$且$x\in B$, 因此$x\in A\cap B$. 因此$B\cap A\subseteq A\cap B$, 所以$B\cap A\subseteq A\cap B$. 所以$A\cap B=B\cap A$.
+\end{proof}
+
+\begin{proposition}
+	给定集合$A$和$B$, $A\subseteq A\cup B$.
+\end{proposition}
+
+\begin{proof}
+	对于任意$x\in A$, $x\in A$或$x\in B$, 所以$x\in A\cup B$. 因此$A\subseteq A\cup B$.
+\end{proof}
+
+\begin{proposition}
+	给定集合$A$和$B$, $A\cap B\subseteq A$.
+\end{proposition}
+
+\begin{proof}
+	对于任意$x\in A\cap B$, $x\in A$, 所以$A\cap B\subseteq A$.
+\end{proof}
+
+\begin{proposition}
+	给定集合$A$, $B$和$C$, 如果$A\subseteq B$且$A\subseteq C$, 那么$A\subseteq B\cap C$.
+\end{proposition}
+
+\begin{proof}
+	假设$A\subseteq B$且$A\subseteq C$, 对于任意$x\in A$, $x\in B$且$x\in C$, 那么$x\in B\cap C$, 所以$A\subseteq B\cap C$.
+\end{proof}
+
+\begin{theorem}
+	集合上的运算满足以下基本性质:
+
+	\begin{itemize}
+		\item 交换律(Commutative property)
+			\begin{itemize}
+				\item[] $A\cup B=B\cup A$
+				\item[] $A\cap B=B\cap A$
+				\item[] $A\bigtriangleup B=B\bigtriangleup A$
+			\end{itemize}
+		\item 结合律(Associative property)
+			\begin{itemize}
+				\item[] $(A\cup B)\cup C=A\cup (B\cup C)$
+				\item[] $(A\cap B)\cap C=A\cup (B\cap C)$
+				\item[] $(A\bigtriangleup B)\bigtriangleup C=A\bigtriangleup (B\bigtriangleup C)$
+			\end{itemize}
+		\item 分配律(Distributive property)
+			\begin{itemize}
+				\item[] $(A\cup B)\cap C=(A\cap C)\cup (B\cap C)$
+				\item[] $A\cap (B\cup C)=(A\cap B)\cup (A\cap C)$
+				\item[] $(A\cap B)\cup C=(A\cup C)\cap (B\cup C)$
+				\item[] $A\cup (B\cap C)=(A\cup B)\cap (A\cup C)$
+				\item[] $(A\cup B)\setminus C=(A\setminus C)\cup (B\setminus C)$
+				\item[] $(A\setminus B)\cap C=(A\cap C)\setminus (B\cap C)$
+				\item[] $A\cap (B\setminus C)=(A\cap B)\setminus (A\cap C)$
+				\item[] $A\cap (B\bigtriangleup C)=(A\cap B)\bigtriangleup (A\cap C)$
+			\end{itemize}
+		\item 幂等律(Idempotent laws)
+			\begin{itemize}
+				\item[] $A\cup A=A$
+				\item[] $A\cap A=A$
+			\end{itemize}
+		\item 吸收律(Absorption laws)
+			\begin{itemize}
+				\item[] $(A\cup B)\cap A=A\cap (A\cup B)=A$
+				\item[] $(A\cap B)\cup A=A\cup (A\cap B)=A$
+			\end{itemize}
+		\item 幺元(Identity)
+			\begin{itemize}
+				\item[] \makebox[5cm]{$A\cup \varnothing=\varnothing \cup A=A$\hfill}\quad $\varnothing$是$\cup$的幺元
+				\item[] \makebox[5cm]{$A\bigtriangleup \varnothing=\varnothing \bigtriangleup A=A$\hfill}\quad $\varnothing$是$\bigtriangleup$的幺元
+				\item[] \makebox[5cm]{$A\setminus \varnothing=A$\hfill}\quad $\varnothing$是$\setminus$的右幺元
+			\end{itemize}
+		\item 零元
+			\begin{itemize}
+				\item[] \makebox[5cm]{$A\cap \varnothing=\varnothing \cap A=\varnothing$\hfill}\quad $\varnothing$是$\cap$的零元
+				\item[] \makebox[5cm]{$\varnothing \setminus A=\varnothing$\hfill}\quad $\varnothing$是$\setminus$的左零元
+			\end{itemize}
+		\item 幂幺律
+			\begin{itemize}
+				\item[] $A\bigtriangleup A=\varnothing$
+			\end{itemize}
+		\item 德$\cdot$摩根律(De Morgan's laws)
+			\begin{itemize}
+				\item[] $S\setminus (A\cup B)=(S\setminus A)\cap (S\setminus B)$\quad 或\quad $\overline{ A\cup B}=\overline A\cap \overline B$
+				\item[] $S\setminus (A\cap B)=(S\setminus A)\cup (S\setminus B)$\quad 或\quad $\overline{ A\cap B}=\overline A\cup \overline B$
+			\end{itemize}
+			推广的德$\cdot$摩根律如下:
+			给定非空集族$\{A_i\mid i\in I\}$, $I$是索引集, 可能是有限集, 可能是可数集, 也可能是不可数集.
+			\begin{align*}
+				\overline{\bigcup_{i\in I} A_i} & =\bigcap_{i\in I}\overline{A_i}, \\
+				\overline{\bigcap_{i\in I} A_i} & =\bigcup_{i\in I}\overline{A_i}.
+			\end{align*}
+	\end{itemize}
+\end{theorem}
+
+\section{幂集的基本性质}
+\begin{proposition}
+	给定集合$S$, $S\in \mathscr P(S)$.
+\end{proposition}
+
+\begin{proof}
+	$S\subseteq S$, 由幂集的定义可知$S\in \mathscr P(a)$.
+\end{proof}
+
+\begin{proposition}
+	给定集合$A$和$B$. $A\subseteq B$当且仅当$\mathscr P(A)\subseteq \mathscr P(B)$.
+\end{proposition}
+
+\begin{proof}
+	充分性: 假设$\mathscr P(A)\subseteq \mathscr P(B)$. 给定集合$A$, 根据配对公理, 存在集合$\{A\}$. $\{A\}\subseteq \mathscr P(A)$, 又$\mathscr P(A)\subseteq \mathscr P(B)$, 所以$\{A\}\subseteq \mathscr P(B)$. $A\in \{A\}$, 所以$A\in \mathscr P(B)$, 即$A\subseteq B$.
+
+	必要性: 如果$A\subseteq B$, 那么对于任意$a\in \mathscr P(A)$, $a\subseteq A$, 所以$a\subseteq B$, 因此$a\in \mathscr P(B)$. 所以$\mathscr P(A)\subseteq \mathscr P(B)$.
+\end{proof}
+
+\begin{proposition}
+	给定集合$A$和$B$. $A=B$当且仅当$\mathscr P(A)=\mathscr P(B)$.
+\end{proposition}
+
+\begin{proof}
+	充分性: 假设$A=B$, 根据外延公理, $\mathscr P(A)=\mathscr P(B)$.
+
+	必要性: 假设$\mathscr P(A)=\mathscr P(B)$. 那么$\mathscr P(A)\subseteq \mathscr P(B)$, 所以$A\subseteq B$. 同理可知, $\mathscr P(B)\subseteq \mathscr P(A)$, 所以$B\subseteq A$. 因此$A=B$.
+\end{proof}
+
+\begin{proposition}
+	给定集合$A$和$B$. 如果$\mathscr P(A)\in \mathscr P(B)$, 那么$A\in B$且$A\subseteq B$.
+\end{proposition}
+
+\begin{proof}
+	如果$\mathscr P(A)\in \mathscr P(B)$, 那么$\mathscr P(A)\subseteq B$. $A\in P(A)$, 所以$A\in B$. $\{A\}\subseteq \mathscr P(A)$, 所以$\{A\}\subseteq \mathscr P(B)$, 因此$A\in \mathscr P(B)$, $A\subseteq B$.
+\end{proof}
+
+注意, 如果$A\in B$, 并不能推出$\mathscr P(A)\in \mathscr P(B)$. 例如$A=1$, $B=\{1\}$. 可知$A\in B$. 但是$P(A)=\{\varnothing,\{\varnothing\}\}$, $P(B)=\{\varnothing, \{\{\varnothing\}\}\}$. $\mathscr P(A)\notin \mathscr P(B)$.
+
+\begin{proposition}
+	给定集合$A$和$B$. $\mathscr P(A)\subseteq \mathscr P(A\cup B)$.
+\end{proposition}
+
+\begin{proof}
+	对于任意$x\in \mathscr P(A)$, $x\subseteq A$, 又$A\subseteq A\cup B$, 所以$x\subseteq A\cup B$, $x\in \mathscr P(A\cup B)$. 所以$\mathscr P(A)\subseteq \mathscr P(A\cup B)$.
+\end{proof}
+
+\begin{proposition}
+	给定集合$A$和$B$. $\mathscr P(A)\cup \mathscr P(B)\subseteq \mathscr P(A\cup B)$.
+\end{proposition}
+
+\begin{proof}
+	对于任意$x\in \mathscr P(A)\cup \mathscr P(B)$, $x\in \mathscr P(A)$或$x\in \mathscr P(B)$. 因为$\mathscr P(A)\subseteq \mathscr P(A\cup B)$, 如果$x\in \mathscr P(A)$, 那么$x\in \mathscr P(A\cup B)$. 因为$\mathscr P(B)\subseteq \mathscr P(A\cup B)$, 如果$x\in \mathscr P(B)$, 那么$x\in \mathscr P(A\cup B)$. 综合以上两种情况, $x\in \mathscr P(A\cup B)$, 所以$\mathscr P(A)\cup \mathscr P(B)\subseteq \mathscr P(A\cup B)$.
+\end{proof}
+
+\begin{proposition}
+	给定集合$A$和$B$. $\mathscr P(A)\cap \mathscr P(B)=\mathscr P(A\cap B)$.
+\end{proposition}
+
+\begin{proof}
+	对于任意$x\in \mathscr P(A)\cap \mathscr P(B)$, $x\in \mathscr P(A)$且$x\in \mathscr P(B)$, 也即$x\subseteq A$且$x\subseteq B$, 所以$x\subseteq A\cap B$. 因此$x\in \mathscr P(A\cap B)$. 如果$x\in \mathscr P(A\cap B)$, 那么$x\subseteq A\cap B$, $x\subseteq A$且$x\subseteq B$. 那么$x\in \mathscr P(A)$且$x\in \mathscr P(B)$, $x\in \mathscr P(A)\cap \mathscr P(B)$. 所以$\mathscr P(A)\cap \mathscr P(B)=\mathscr P(A\cap B)$.
+\end{proof}
+
+\begin{proposition}
+	给定集合$A$和$B$. $\mathscr P(A\setminus B)\subseteq (\mathscr P(A)\setminus \mathscr P(B))\cup \{\varnothing\}$.
+\end{proposition}
+
+\begin{proof}
+	对于任意$x\in \mathscr P(A\setminus B)$, $x\subseteq A\setminus B$. 如果$x\neq \varnothing$, 那么$x\subseteq A$且$x\not \subseteq B$. 所以$x\in \mathscr P(A)$且$x\notin \mathscr P(B)$. 所以$x\in \mathscr P(A)\setminus \mathscr P(B)$. 如果$x=\varnothing$, $x\in \{\varnothing\}$. 所以$\mathscr P(A\setminus B)\subseteq (\mathscr P(A)\setminus \mathscr P(B))\cup \{\varnothing\}$.
+\end{proof}
+
+\begin{proposition}
+	给定集合$S$, $\bigcup \mathscr P(S)=S$.
+\end{proposition}
+
+\begin{proof}
+	给定集合$S$, 对于任意$a\in \bigcup \mathscr P(S)$, 存在$b\in \mathscr P(S)$, $a\in b$. 由$b\in \mathscr P(S)$可知$b\subseteq S$. $a\in b$且$b\subseteq S$, 所以$a\in S$. $\bigcup \mathscr P(S)\subseteq S$. 对于任意$c\in S$, 根据配对公理, 存在集合$\{c\}$. $\{c\}\subseteq S$, 所以$\{c\}\in \mathscr P(S)$. $\{c\}\in \mathscr P(S)$且$c\in \{c\}$, 所以$c\in \bigcup \mathscr P(S)$. 所以$S\subseteq \bigcup \mathscr P(S)$. 因此$\bigcup \mathscr P(S)=S$.
+\end{proof}
+
+\begin{proposition}
+	给定集合$S$, $S\subseteq \mathscr P(\bigcup S)$.
+\end{proposition}
+
+\begin{proof}
+	对于任意$x\in S$, 对于任意$y\in x$, $y\in \bigcup S$. 所以$x\subseteq \bigcup S$, $x\in \mathscr P(\bigcup S)$.  所以$S\subseteq \mathscr P(\bigcup S)$.
+\end{proof}
+
+\section{笛卡尔积}
+	根据定义可知: 对于任意集合$A$, $\varnothing \times A=\varnothing$, $A\times \varnothing=\varnothing$.
+
+	一般而言, 笛卡尔积不满足交换律和结合律.
+
+\begin{proposition}
+	$A\times B\subseteq \mathscr P(A\cup B)$
+\end{proposition}
+
+\begin{proof}
+	$\begin{aligned}[t]
+		x\in A\times B & \rightarrow x\in \{(a,b)\mid a\in A\wedge b\in B\}\\
+		& \rightarrow x\in \{(a,b)\mid a\in A\vee b\in B\}\\
+		& \rightarrow x\in \{(a,b)\mid a\in A\cup B\vee b\in A\cup B\}\\
+		& \rightarrow x\in \{\{\{a\},\{a,b\}\}\mid a\in A\cup B\vee b\in A\cup B\}\\
+		& \rightarrow x\in \mathscr P(A\cup B)
+	\end{aligned}$
+	
+	所以$A\times (B\cup C)=(A\times B)\cup (A\times C)$.
+\end{proof}
+
+\begin{proposition}
+	``$\times$''运算符对``$\cup$''运算符的分配律:
+	\begin{align}
+		A\times (B\cup C) & =(A\times B)\cup (A\times C)\\
+		(B\cup C)\times A & =(B\times A)\cup (C\times A)
+	\end{align}
+\end{proposition}
+
+\begin{proof}
+	``$\times$''运算符对``$\cup$''运算符的左分配律:
+
+	$\begin{aligned}[t]
+		x\in A\times (B\cup C) & \leftrightarrow x\in \{(a,y)\mid a\in A\wedge y\in (B\cup C)\}\\
+		& \leftrightarrow x\in \{(a,y)\mid a\in A\wedge (y\in B\vee y\in C)\}\\
+		& \leftrightarrow x\in \{(a,y)\mid (a\in A\wedge y\in B)\vee (a\in A\wedge y\in C)\}\\
+		& \leftrightarrow x\in \{(a,y)\mid a\in A\wedge y\in B\}\vee x\in \{(a,y)\mid a\in A\wedge y\in C\}\\
+		& \leftrightarrow x\in A\times B\vee x\in A\times C\\
+		& \leftrightarrow x\in (A\times B)\cup (A\times C)
+	\end{aligned}$
+
+	所以$A\times (B\cup C)=(A\times B)\cup (A\times C)$.\\
+
+	``$\times$''运算符对``$\cup$''运算符的右分配律:
+
+	$\begin{aligned}[t]
+		x\in (B\cup C)\times A & \leftrightarrow x\in \{(y,a)\mid y\in (B\cup C)\wedge a\in A\}\\
+		& \leftrightarrow x\in \{(y,a)\mid (y\in B\vee y\in C)\wedge a\in A)\}\\
+		& \leftrightarrow x\in \{(y,a)\mid (y\in B\wedge a\in A)\vee (y\in C\wedge a\in A)\}\\
+		& \leftrightarrow x\in \{(y,a)\mid y\in B\wedge a\in A\}\vee x\in \{(y,a)\mid y\in C\wedge a\in A\}\\
+		& \leftrightarrow x\in B\times A\vee x\in C\times A\\
+		& \leftrightarrow x\in (B\times A)\cup (C\times A)
+	\end{aligned}$
+
+	所以$(B\cup C)\times A=(B\times A)\cup (C\times A)$.
+\end{proof}
+
+\begin{proposition}
+	``$\times$''运算符对``$\cap$''运算符的分配律:
+	\begin{align}
+		A\times (B\cap C) & =(A\times B)\cap (A\times C)\\
+		(B\cap C)\times A & =(B\times A)\cap (C\times A)
+	\end{align}
+\end{proposition}
+
+\begin{proof}
+	``$\times$''运算符对``$\cap$''运算符的左分配律:
+
+	$\begin{aligned}[t]
+		x\in A\times (B\cap C) & \leftrightarrow x\in \{(a,y)\mid a\in A\wedge y\in (B\cap C)\}\\
+		& \leftrightarrow x\in \{(a,y)\mid a\in A\wedge (y\in B\wedge y\in C)\}\\
+		& \leftrightarrow x\in \{(a,y)\mid (a\in A\wedge y\in B)\wedge (a\in A\wedge y\in C)\}\\
+		& \leftrightarrow x\in \{(a,y)\mid a\in A\wedge y\in B\}\wedge x\in \{(a,y)\mid a\in A\wedge y\in C\}\\
+		& \leftrightarrow x\in A\times B\wedge x\in A\times C\\
+		& \leftrightarrow x\in (A\times B)\cap (A\times C)
+	\end{aligned}$
+
+	所以$A\times (B\cap C)=(A\times B)\cap (A\times C)$.\\
+
+	``$\times$''运算符对``$\cap$''运算符的右分配律:
+
+	$\begin{aligned}[t]
+		x\in (B\cap C)\times A & \leftrightarrow x\in \{(y,a)\mid y\in (B\cap C)\wedge a\in A\}\\
+		& \leftrightarrow x\in \{(y,a)\mid (y\in B\wedge y\in C)\wedge a\in A)\}\\
+		& \leftrightarrow x\in \{(y,a)\mid (y\in B\wedge a\in A)\wedge (y\in C\wedge a\in A)\}\\
+		& \leftrightarrow x\in \{(y,a)\mid y\in B\wedge a\in A\}\wedge x\in \{(y,a)\mid y\in C\wedge a\in A\}\\
+		& \leftrightarrow x\in B\times A\wedge x\in C\times A\\
+		& \leftrightarrow x\in (B\times A)\cap (C\times A)
+	\end{aligned}$
+	
+	所以$(B\cap C)\times A=(B\times A)\cap (C\times A)$.
+\end{proof}
+
+\begin{proposition}
+	$(A\times B)\cap (C\times D)=(A\cap C)\times (B\cap D)$
+\end{proposition}
+
+\begin{proof}
+	$\begin{aligned}[t]
+		x\in (A\times B)\cap (C\times D) & \leftrightarrow x\in \{(a,b)\mid a\in A\wedge b\in B\}\wedge x\in \{(c,d)\mid c\in C\wedge d\in D\}\\
+		& \leftrightarrow x\in \{(a,b)\mid a\in A\wedge b\in B\wedge a\in C\wedge b\in D\}\\
+		& \leftrightarrow x\in \{(a,b)\mid a\in A\wedge a\in C\wedge b\in B\wedge b\in D\}\\
+		& \leftrightarrow x\in \{(a,b)\mid a\in A\cap C\wedge b\in B\cap D\}\\
+		& \leftrightarrow x\in (A\cap C)\times (B\cap D)\\
+	\end{aligned}$
+	
+	所以$(A\times B)\cap (C\times D)=(A\cap C)\times (B\cap D)$.
+\end{proof}
+
+\begin{proposition}
+	$(A\times B)\cup (B\times A)\subseteq (A\cup B)\times (A\cup B)$
+\end{proposition}
+
+\begin{definition}
+	$A\bigtriangleup  B=(A\setminus B)\cup (B\setminus A)$
+\end{definition}
+
+\begin{proposition}
+	$A\cup (B\setminus C)=A\setminus (B\cup C)$
+
+	$(A\setminus B)\setminus C=A\setminus (B\cup C)$
+
+	$A\setminus (B\setminus C)=A\bigtriangleup B$
+\end{proposition}
