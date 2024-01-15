@@ -1,0 +1,161 @@
+\chapter{公理集合论}
+现代数学是建立在公理集合论的基础之上. 目前数学家普遍认可的公理系统是Zermelo-Fraenkel公理系统(ZF公理系统), 再加上选择公理(Axiom of Choice)就构成了ZFC公理系统.
+
+纯粹集合论者在数学中只研究一切被称为集合(Set)的对象(Object), 而无需考虑其它对象. 非纯粹集合论者认为在数学中存在一类原始对象, 它们只能作为集合的元素存在, 本身不能作为集合存在. 本书对这两种论点持开放态度.
+
+在ZFC公理系统中, 有两个未加定义的原始概念---集合和属于. 给定任意集合$a$和$b$: 如果集合$a$属于集合$b$, 记作$a\in b$; 如果集合$a$不属于集合$b$, 记作$a\notin b$; 如果对于任意集合$c$, $c\in a$蕴含$c\in b$, 那么称$a$是$b$的子集, $a$包含于$b$, 或$b$包含$a$, 记作$a\subseteq b$; 如果集合$a$不是集合$b$的子集, 记作$a\nsubseteq b$.
+
+\section{公理}
+在哲学中, 外延(Extension)由一个概念所适用的全体对象构成, 它是相对于内涵(Intension/Connotation)而言的. 在数学中, 外延是指一个数学概念对应的集合中的所有元素. 集合可以描述概念的外延, 这是公理化集合论中外延公理的出发点. 两个集合相等当且仅当它们包含的所有元素都一一相等. 这个公理的实质在于指出集合唯一地由它的成员来决定.
+
+\begin{axiom}[外延公理]
+	给定任意集合$a$和$b$, $a=b$当且仅当: 对于任意集合$c$, $c\in a$当且仅当$c\in b$. 一阶逻辑下, 外延公理表述如下:
+	\begin{equation}
+		\forall a\forall b(a=b\leftrightarrow \forall c(c\in a\leftrightarrow c\in b)).
+	\end{equation}
+\end{axiom}
+
+给定任意集合$a$和$b$: 如果两个集合不满足条件$a=b$, 那么称$a$不等于$b$, 记作$a\neq b$; 如果$a\subseteq b$, 且$a\neq b$, 则称$a$是$b$的真子集, $a$真包含于$b$, 或$b$真包含$a$.
+
+分类公理(Axiom schema of specification), 又称分离公理(Axiom schema of separation), 受限概括公理(Axiom schema of restricted comprehension)或子集公理(Subset axiom scheme).
+
+\begin{axiom}[分类公理]
+	假定$P$是一个单变量谓词. 给定任意集合$a$, 存在一个集合$b$, 使得对于任意集合$c$, $c\in b$当且仅当$c\in a$且$P(c)$成立. 一阶逻辑下, 分类公理表述如下:
+	\begin{equation}
+		\forall a\exists b\forall c(c\in b\leftrightarrow c\in a\wedge P(c)).
+	\end{equation}
+\end{axiom}
+
+注意, 对于所有这种谓词$P$都存在一个特定的分类公理, 所以分类公理实际上是一个公理模式.
+
+通过分类公理定义的集合$b$是集合$a$的子集. 分类公理是在一个已经存在的集合基础上通过限定条件获取新集合的有力手段. 通过外延公理, 可以证明通过分类公理获取的集合是唯一的.
+
+\begin{proposition}
+	通过分类公理使用同一个谓词获取的集合是唯一的.
+\end{proposition}
+
+\begin{proof}
+	设通过分类公理使用谓词$P$从集合$a$获取两个集合$x$和$y$. 由分类公理可知, $x\subseteq a$, 对于任意$z \in x$, 有$z\in a$且$P(x)$成立, 因此$z\in y$. 同理也可以证明对于任意$z \in y$, 有$z \in x$. 因此$x=y$.
+\end{proof}
+
+\begin{axiom}[配对公理]
+	给定任意集合$a$和$b$, 存在一个集合$c$, 使得对于任意集合$d$，$d\in c$当且仅当$d\in a$或$d\in b$. 一阶逻辑下, 配对公理表述如下:
+	\begin{equation}
+		\forall a\forall b\exists c\forall d(d\in c\leftrightarrow d\in a\vee d\in b).
+	\end{equation}
+\end{axiom}
+
+\begin{axiom}[并集公理]
+	给定任意集合$a$, 存在一个集合$b$, 使得对于任意集合$c$，$c\in b$当且仅当存在一个集合$d$, 满足$d\in  a$且$c\in d$. 一阶逻辑下, 并集公理表述如下:
+	\begin{equation}
+		\forall a\exists b\forall c(c\in b\leftrightarrow \exists d(d\in a \wedge c\in d).
+	\end{equation}
+\end{axiom}
+
+上面定义的是广义并运算, 下面引入二元并运算.
+
+\begin{definition}
+	给定集合$A$和$B$, $A\cup B\coloneq \bigcup\{A,B\}$.
+\end{definition}
+
+给定集合$A$和$B$, 根据配对公理, 存在集合$\{A,B\}$, 因此可以在此集合上执行并运算.
+
+\begin{proposition}
+	给定集合$A$, $B$和$C$, 如果$A\subseteq C$且$B\subseteq C$, 那么$A\cup B\subseteq C$.
+\end{proposition}
+
+\begin{proof}
+	对于任意$x\in A\cup B$, $x\in A$或$x\in B$. 如果$x\in A$, 因为$A\subseteq C$, 所以$x\in C$. 同理,  如果$x\in B$, 因为$B\subseteq C$, 所以$x\in B$. 综合以上两种情况, $x\in C$. 所以$A\cup B\subseteq C$.
+\end{proof}
+
+\begin{proposition}
+	给定集合$A,B$. 如果$A\subseteq B$, 那么$\bigcup A\subseteq \bigcup B$.
+\end{proposition}
+
+\begin{proof}
+	给定集合$A,B$. 如果$A\subseteq B$, 那么对于任意$a\in \bigcup A$, 存在$b \in A$, $a\in b$. 因为$A\subseteq B$, 所以$b\in B$. 又$a\in b$, 所以$a\in \bigcup B$. 所以$\bigcup A\subseteq \bigcup B$.
+\end{proof}
+
+\begin{axiom}[空集公理]
+	存在一个集合$a$, 使得对于任意集合$b$, $b\notin a$. 一阶逻辑下, 空集公理表述如下:
+	\begin{equation}
+		\forall a\forall b(\neg(b\in a)).
+	\end{equation}
+
+	空集记作$\varnothing$.
+\end{axiom}
+
+\begin{axiom}[无穷公理]
+	存在一个集合$a$, $\varnothing \in a$, 并且对于任意集合$b\in a$, $b\cup \{b\}\in a$. 一阶逻辑下, 无穷公理表述如下:
+	\begin{equation}
+		\exists a(\varnothing \in a \wedge \forall b(b\in a \rightarrow b\cup\{b\}\in a)).
+	\end{equation}
+\end{axiom}
+
+\begin{axiom}[替代公理]
+	假定$P$是双变量谓词, 给定任意集合$a$, 存在唯一的集合$b$满足$P(a,b)$. 给定任意集合$c$, 存在一个集合$d$, 对于任意集合$e$, $e\in d$当且仅当存在一个集合$f$, $f\in c$且$P(f,e)$成立. 一阶逻辑下, 替代公理表述如下:
+	\begin{equation}
+		\forall a\exists !b(P(a,b))\rightarrow \forall c\exists d\forall e(e\in d\leftrightarrow \exists f(f\in c\wedge P(f, e)).
+	\end{equation}
+\end{axiom}
+
+\begin{proposition}[聚集公理]
+	假定$P$是双变量谓词, 给定任意集合$a$, 至少存在一个集合$b$满足$P(a,b)$. 给定任意集合$c$, 存在一个集合$d$, 对于任意集合$e$, $e\in d$仅当存在一个集合$f$, $f\in c$且$P(f,e)$成立. 一阶逻辑下, 聚集表述如下:
+	\begin{equation}
+		\forall a\exists b(P(a,b))\rightarrow \forall c\exists d\forall e(e\in d\rightarrow \exists f(f\in c\wedge P(f, e)).
+	\end{equation}
+\end{proposition}
+
+由聚集公理确定的集合不能保证是唯一的.
+
+\begin{axiom}[幂集公理]
+	给定任意集合$a$, 存在一个集合$b$, 使得对于任意集合$c$，$c\in b$当且仅当$c\subseteq a$. 一阶逻辑下, 幂集公理表述如下:
+	\begin{equation}
+		\forall a\exists b\forall c(c\in b\leftrightarrow c\subseteq a).
+	\end{equation}
+\end{axiom}
+
+集合$a$的幂集记作$\mathscr P(a)$.
+
+\begin{definition}[集族]
+	如果给定任意集合$I$和$X$, 存在一个满射函数$f$, 满足:
+	\begin{align*}
+	f\colon & I\rightarrow X \\
+	& i\mapsto x_i=f(i),
+	\end{align*}
+	称集合$I$为指标集(Index set), 集合$X$为集族(Family of set).
+\end{definition}
+
+\begin{axiom}[选择公理]
+	给定任意非空集合构成的集族$X$, 存在一个选择函数$f$, 满足: 对于任意$x\in X$, 有$f(x)\in x$. 一阶逻辑下, 选择公理表述如下:
+	\begin{equation}
+		\forall X(\neg(\varnothing\in X)\rightarrow \exists f\colon X\rightarrow \bigcup X(\forall x(x\in X\rightarrow f(x)\in x))).
+	\end{equation}
+\end{axiom}
+
+如果从有限集内选择一个元素是不需要选择公理的. 从有限集的定义可知, 有限集是可以与某个集合$N=\{x\in \mathbb{N}\mid n\in \mathbb{N}\wedge x\leqslant n\}$建立一一映射的集合. 假设这个一一映射函数为$f$, 那么我们可以选择$f(0)$作为我们要选择的元素. 如果集合为无限集$S$, 那么从$S$中选择一个元素$x$分为两种情况. 一种情况是元素$x$具备某种属性$P$, 该属性可以将元素$x$从集合中唯一的确定下来. 在这种情况下我们不需要选择公理就可以从无限集$S$中选择唯一一个元素$x$, 该元素就是集合$\{x\in S\mid P(x)\}$的唯一元素.
+
+那么选择公理为什么要这么定义呢? 为什么不直接以如下的方式定义:
+\[
+\forall X(\neg(X=\varnothing)\rightarrow \exists f\colon X\rightarrow X(f(x)\in x)).
+\]
+
+选择公理的定义保留了我们可以从一个集合$S$中选择出无限多个元素构成一个新集合$S'$的能力. 新集合可能是可数集, 也可能是不可数集. 而如果采用上面那种定义, 那我们只保留了从无限集合中选择一个元素的能力, 而丧失了直接选择出无限集的能力. 而且选择公理的定义也支持我们从一个无限集合$S$中挑选出一个元素$x$的能力. 根据配对公理, 存在集合$A=\{S\}$. 根据选择公理, 存在一个选择函数$f$, $f(S)$就是我们要选择的元素.
+
+\begin{axiom}[依赖选择公理]
+	依赖选择公理(Axiom of dependent choice), 缩写为DC.
+
+	左全关系版本: 给定任意非空集合$S$以及$S$上的任意左全关系$R$, 那么存在一个$S$上的数列$(x_n)_{n\in\mathbb N}$满足: 对任意$n\in \mathbb N$, $x_n\mathrel Rx_{n+1}$成立.
+
+	右全关系版本: 给定任意非空集合$S$以及$S$上的任意右全关系$R$, 那么存在一个$S$上的数列$(x_n)_{n\in\mathbb N}$满足: 对任意$n\in \mathbb N$, $x_{n+1}\mathrel Rx_n$成立.
+\end{axiom}
+
+选择公理是比依赖选择公理更强的公理. 选择公理可以推出依赖选择公理.
+
+\begin{proof}
+	这里仅证明左全关系版本, 右全关系版本证明过程类似. 给定任意非空集合$S$以及$S$上的任意左全关系$R$. 对于任意$x\in S$, 构建集合$R_x=\{y\in S\mid x\mathrel Ry\}$. 由于$R$是左全关系, 所以$R_x$非空. 在集族$A=\{R_x\mid x\in S\}$上使用选择公理, 存在选择函数$f\colon S\rightarrow S$, 对任意$x\in S$, 有$f(x)\in R_x$, 即$x\mathrel Rf(x)$. 所以, 对于任意$x\in S$, 定义序列:
+	\[
+	(a_n)_{n\in \mathbb N}=(f^n(x))_{n\in \mathbb N}.
+	\]
+	其中, $f^n$表示选择函数$f$和自己复合$n$次, 规定$f^0(x)=x$. 序列满足$x_n\mathrel Rx_{n+1}$.
+\end{proof}

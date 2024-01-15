@@ -1,0 +1,14 @@
+\chapter{实数的连续性}
+\section{闭区间套定理}
+\begin{definition}
+	给定无穷多个闭区间$[a_n,b_n]$, $n=0,1,2,\cdots$, 满足以下条件:
+	\begin{enumerate}[itemindent=1em]
+		\item $[a_{n+1},b_{n+1}]\subseteq[a_n,b_n]$;
+		\item $\lim \limits_{n\rightarrow \infty}(b_n-a_n)=0$,
+	\end{enumerate}
+	称这些无穷多个闭区间构成的集合$\{[a_n,b_n]\mid n\in \mathbb N\}$为闭区间套(nested intervals), 简称区间套.
+\end{definition}
+
+\begin{theorem}[闭区间套定理]
+	如果$\{[a_n,b_n]\mid n\in \mathbb N\}$是一个闭区间套, 则存在唯一实数$\xi \in [a_n,b_n], n=0,1,2,\ldots$, 并且$\lim \limits_{n\rightarrow \infty}a_n=\lim \limits_{n\rightarrow \infty}b_n)=\xi$.
+\end{theorem}

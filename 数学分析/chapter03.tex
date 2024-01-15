@@ -1,0 +1,89 @@
+\chapter{关系和函数}
+\section{关系}
+
+在集合中, 元素是没有先后之分的. 但是在很多情况下, 我们还需要有先后之分的数据结构. 
+\begin{definition}[有序对]
+	给定任意集合$a$和$b$, 称集合$\{\{a\},\{a,b\}\}$为有序对, 记作$(a, b)$或$<a,b>$.
+\end{definition}
+
+\begin{proposition}
+	给定有序对$(a,b)$和$(c,d)$, $(a,b)=(c,d)$当且仅当$a=c$且$b=d$.
+\end{proposition}
+
+\begin{proof}
+	充分性: 如果$a=c$且$b=d$, 那么$(c,d)=\{\{c\},\{c,d\}\}=\{\{a\},\{a,b\}\}=(a,b)$.
+
+	必要性: 如果$a=b$, 那么$(a,b)=\{a\}$. 又$(a,b)=(c,d)$, 那么$(c,d)=\{\{c\},\{c,d\}\}=\{\{a\}\}$. 因为$\{a\}\in \{\{a\}\}$, 所以$\{a\}\in \{\{c\}, \{c,d\}\}$, 那么$\{a\}=\{c\}$或$\{a\}=\{c,d\}$. 如果$\{a\}=\{c\}$, 那么$a=c$. 所以$\{\{c\}, \{c,d\}\}=\{\{a\}\},\{a,d\}\}=\{\{a\}\}$. 所以$\{a,d\}\in \{\{a\}\}$, 那么$\{a,d\}=\{a\}$. 所以$a=d$. 得证. 如果$\{a\}=\{c,d\}$, 那么$c\in \{a\}$且$d\in \{a\}$, 那么$c=a$且$d=a$. 又$a=b$, 所以$a=c$且$b=d$. 得证.
+
+	如果$a\neq b$, 那么$(a,b)=(c,d)=\{\{a\},\{a,b\}\}=\{\{c\},\{c,d\}\}$. $\{c\}=\{a\}$或$\{c\}=\{a,b\}$. 如果$\{c\}=\{a,b\}$, 那么$a=c$且$b=c$, 因此$a=b$, 与假设矛盾. 所以$\{c\}=\{a\}$. 所以$(a,b)=(c,d)=\{\{a\},\{a,b\}\}=\{\{a\},\{a,d\}\}$. 同理可得$\{a\}=\{a\}$或$\{a\}=\{a,d\}$. 如果$\{a\}=\{a,d\}$, 可知$a=d$. 已知$a=c$, 所以$c=d$. 那么$(a,b)=\{c\}$, 可知$a=b$, 与假设矛盾. 所以$\{a\}\neq\{a,d\}$. $\{a,b\}=\{a\}$或$\{a,b\}=\{a,d\}$. 由于$a\neq b$, 因此$\{a,b\}\neq\{a\}$. 所以$\{a,b\}=\{a,d\}$. $b=a$或$b=d$, 已知$a\neq b$, 所以$b=d$. 得证.
+\end{proof}
+
+\begin{definition}[笛卡尔积]
+	给定集合$X$和$Y$, 称集合$\{(x,y)\mid x\in X\wedge y\in Y\}$为集合$X$和$Y$的笛卡尔积(Cartesian product)或直积(Direct product), 记作$X\times Y$.
+\end{definition}
+
+\begin{proposition}
+	给定任意非空集合$X$和$Y$, $P(x,y)$是一个关于$x\in X$和$y\in Y$的性质, 对于任意$x\in X$, 至少存在一个$y\in Y$使得$P(x,y)$成立. 那么存在一个选择函数$f\colon X\rightarrow Y$, 使得对于任意$x\in X$, $P(x,y)$成立.
+\end{proposition}
+
+\begin{proof}
+	给定任意集合$X$和$Y$. 根据概括公理, 对于任意$x\in X$, 存在集合$Z_x=\{(x,y)\in X\times Y\mid P(x,y)\}\}$. 根据外延公理, $Z_x$是唯一的. 根据替换公理, 存在集合$Z=\{Z_x\mid x\in X\}$. 由于$X$是非空集合, 所以集合$Z$也是非空集合. 根据选择公理, 存在一个选择函数$f\colon X\rightarrow Y$, 使得对于任意$x\in X$, $P(x,y)$成立.
+\end{proof}
+
+\begin{definition}[二元关系]
+	给定集合$X$和$Y$, 集合$G(R)$是$X$和$Y$的笛卡尔积的子集, $G(R)\subseteq X\times Y$, 称$R=(X,Y,G(R))$为集合$X$和$Y$上的二元关系(Relation), 称$G(R)$为二元关系$R$的图(Graph). 如果给定任意$x\in X$和$y\in Y$, $(x,y)\in R$, 称$x$和$y$有二元关系$R$, 记作$R(x,y)$或$aRb$; 称$\{x\in X\mid exists y\in Y(xRy)\}$为二元关系$R$的定义域(Domain/Domain of definition), 记为$\dom R$; 称$Y$为二元关系$R$的上域/陪域(Codomain); 称$\{y\in Y\mid \exists x\in X(xRy))\}$为二元关系$R$的值域, 记为$\dom R$, 称$\dom R\cup \ran R$为二元关系$R$的域, 记为$\fld R$.
+\end{definition}
+
+\begin{proposition}
+	给定二元关系$R$, 对于任意$(x,y)\in R$, $x\in \bigcup \bigcup R$, $y\in \bigcup \bigcup R$, $\fld R=\bigcup \bigcup R$.
+\end{proposition}
+
+\begin{proof}
+	TBD
+\end{proof}
+
+\begin{corollary}
+	二元关系$R$的任一子集也是二元关系.
+\end{corollary}
+
+\begin{proof}
+	给定任意二元关系$R$. 取$R$的任一子集$R'\subseteq R$. 对于任意$(x,y)\in R'$, 可知$(x,y)\in R$. 所以$R'$构成从$X$到$Y$上的二元关系. $\dom R'=\{x\in \dom R\mid xR'y\}$, $\ran R'=\{y\in \ran R\mid xR'y\}$.
+\end{proof}
+
+\begin{definition}[逆关系]
+	给定集合$X$和$Y$上的二元关系$R$, 称集合$R^{-1}=\{(x,y)\mid (y,x)\in R\}$为关系$R$的逆关系(Inverse relation), 逆关系的定义域为$Dom R$, 上域为$X$, 值域为.
+\end{definition}
+
+\begin{definition}
+	给定任意一个集合$S$, 从$S$到$S$的任意一个二元关系$R$称为$S$上的二元关系$R$.
+
+	如果$R$是空集, 称$R$为$S$上的空关系(empty relation).
+
+	如果对于任意$x\in S$, $(x,x)\in R$, 且对于任意$r\in R$, 存在$y\in S$, $r=(y,y)$, 称$R$为$S$上的恒等关系(identity relation).
+
+	如果对于任意$x\in S$, $x\mathrel Rx$, 称$R$是自反的(reflexive).
+
+	如果对于任意$x\in S$, $x\not \mathrel Rx$, 称$R$是反自反的(irreflexive).
+
+	如果对于任意$x,y\in S$, 如果$x\mathrel Ry$, 那么$y\mathrel Rx$, 称$R$是对称的(symmetric).
+
+	如果对于任意$x,y\in S$, 如果$x\mathrel Ry$且$y\mathrel Rx$, 那么$x=y$, 称$R$是反对称的(antisymmetric).
+
+	如果对于任意$x,y\in S$, 如果$x\mathrel Ry$, 那么$y\not \mathrel Rx$, 称$R$是非对称的(asymmetric).
+
+	如果对于任意$x,y,z\in S$, 如果$x\mathrel Ry$且$y\mathrel Rz$, 那么$x\mathrel Rz$, 称$R$是传递的(transitive).
+
+	如果对于任意$x,y\in S$, 如果$x\mathrel Ry$或$x=y$或$y\mathrel Rx$, 称$R$是连通的(connected).
+
+	如果对于任意$x,y\in S$, 如果$x\mathrel Ry$或$y\mathrel Rx$, 称$R$是强连通的(strongly connected).
+\end{definition}
+
+\begin{proposition}
+	给定任意一个集合$S$和$S$上任意一个的二元关系$R$, $R$是强连通的当且仅当$R$是连通的且$R$是自反的.
+\end{proposition}
+
+\begin{proof}
+	充分性: 假设$R$是连通的且$R$是自反的. $R$是连通的, 所以对于任意$x,y\in S$, $x\mathrel Ry$或$x=y$或$y\mathrel Rx$. 如果$x=y$, 因为$R$是自反的, 所以$x\mathrel Ry$. 所以对于任意$x,y\in S$, $x\mathrel Ry$或$y\mathrel Rx$, $R$是强连通的.
+
+	必要性: 假设$R$是强连通的, 对于任意$x,y\in S$, $x\mathrel Ry$或$y\mathrel Rx$, 那么$x\mathrel Ry$或$x=y$或$y\mathrel Rx$, $R$是连通的.
+\end{proof}

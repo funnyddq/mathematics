@@ -1,0 +1,50 @@
+\chapter{正则公理}
+
+\begin{axiom}[正则公理]
+	给定任意非空集合$a$, 存在一个集合$b$, $b\in a$且$a\cap b=\varnothing$. 一阶逻辑下, 正则公理表述如下:
+	\begin{equation}
+		\forall a(\neg(a=\varnothing)\rightarrow \exists b(b\in a\wedge a\cap b=\varnothing)).
+	\end{equation}
+\end{axiom}
+
+\begin{proposition}
+	$\forall a(\neg (a\in a))$.
+\end{proposition}
+
+\begin{proof}
+	假设存在一个集合$a$, $a\in a$. 如果$a$为空集, 由空集的定义可知$\neg(a\in a)$. 如果$a$不为空集, 由配对公理可知, 存在集合$b$, $b=\{a\}$. $a\in \{a\}$, 故$a\in b$. 由$a\in a$且$a\in b$可知, $a\cap b$不为空集. 与正则公理矛盾. 故命题得证.
+\end{proof}
+
+\begin{proposition}
+	给定任意集合$X$, $\neg (X=\{X\})$是重言式.
+\end{proposition}
+
+\begin{proof}
+	如果$X=\{X\}$, 那么$X\in \{X\}$, 即$X\in X$. 出现矛盾. 所以$\neg (X=\{X\})$是重言式.
+\end{proof}
+
+\begin{proposition}
+	给定集合$A$和$B$, $\neg(A\in B\wedge B\in A)$是重言式.
+\end{proposition}
+
+\begin{proof}
+	假设存在集合$A$和$B$, $A\in B$且$B\in A$. 根据配对公理, 存在集合$X=\{A,B\}$. $B\in A\cap X$, 所以$A\cap X\neq \varnothing$. $A\in B\cap X$, 所以$B\cap X\neq \varnothing$. 与正则公理矛盾. 所以不存在集合$A$和$B$满足$A\in B$且$B\in A$. 因此$\neg(A\in B\wedge B\in A)$是重言式.
+\end{proof}
+
+根据数学归纳法可证, 给定任意$n$个集合$A_0,A_1,A_2,\cdots,A_n,\cdots$, $\neg(A_0\in A_1\wedge A_1\in A_2\wedge \cdots \wedge A_n\in A_{n+1}\wedge \cdots)$是重言式.
+
+\begin{proposition}
+	$\omega$没有前驱.
+\end{proposition}
+
+\begin{proof}
+	假设$X$是$\omega$的前驱, $X\cup \{X\}=\omega$, 所以$X\in \omega$. $\omega$是$X$的后继, 所以$\omega \in \omega$. 出现矛盾. 所以$\omega$没有前驱.
+\end{proof}
+
+\begin{proposition}
+	$\bigcup \omega=\omega$
+\end{proposition}
+
+\begin{proof}
+	对于任意$x\in \bigcup \omega$, 存在$y\in \omega$, $x\in y$. 因为$\omega$是传递集, 所以$x\in \omega$, $\bigcup \omega \subseteq \omega$. 对于任意$x\in \omega$, $S(x)\in \omega$, $x\in S(x)$, 所以$x\in \bigcup \omega$, $\omega \subseteq \bigcup \omega$. 所以$\bigcup \omega=\omega$.
+\end{proof}

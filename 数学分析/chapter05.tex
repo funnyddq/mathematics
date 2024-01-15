@@ -1,0 +1,109 @@
+\chapter{佐恩定理}
+\section{佐恩定理}
+\begin{definition}
+	给定偏序集$(S,\preccurlyeq)$, $X$是$S$的任意子集. 如果$M$是$X$的上界, 且$M\notin X$, 则称$a$是$X$的严格上界(Strict upper bound).
+\end{definition}
+
+\begin{lemma}
+	\label{2.4.1}
+	给定非空偏序集$(X,\preccurlyeq)$, 对于任意$m\in X$, $X$存在一个良序子集$Y$, $m$是$Y$的最小元, 并且$Y$没有严格上界.
+\end{lemma}
+
+\begin{proof}
+	使用反证法, 假设每个以$m$为最小元的良序子集$Y$都有严格上界. 使用选择公理, 对于每个以$m$为最小元的良序子集$Y$指定一个严格上界$s(Y)\in X$.
+	
+	设性质$P(Y)$为: $Y$是$X$的良序子集, 以$m$为最小元, 且满足: 对于任意$x\in Y\setminus \{m\}$, $x=s(\{y\in Y\mid y<x\})$. 对于任意$x\in Y\setminus \{m\}$, 集合$\{y\in Y\mid y<x\}$是$X$的子集, 也是良序集, 以$m$为最小元.
+	
+	设$Z=\{Y\subseteq X\mid P(Y)\}$. $\{m\}\in Z$, 所以$Z$是非空集. 设$Y,Y'\in Z$, 且$P(Y)$和$P(Y')$都成立. 下面证明$Y\setminus Y'$的每个元素都是$Y'$的严格上界, $Y'\setminus Y$的每个元素都是$Y$的严格上界. 给定任意$Y,Y'\in Z$, $Y\setminus Y'$和$Y'\setminus Y$至少有一个是空集. 设$Y=\{y\in Y\mid y<x_1\})$, $Y'=\{y\in Y\mid y<x_2\})$. 由于$X$是全序集, $x_1\preccurlyeq x_2$和$x_2\preccurlyeq x_1$必有一成立. 不防设$x_1\preccurlyeq x_2$. 那么对于任意$y\in Y$必有$y\preccurlyeq x_1$, 所以$y\preccurlyeq x_2$, 即$y\in Y'$, 也即$Y\subseteq Y'$. 所以对于任意$z\in Y'\setminus Y$, $y\prec z$. $z$是$Y$的严格上界. 同理, 如果$x_2\preccurlyeq x_1$, $Y'\subseteq Y$, 对于任意$z\in Y\setminus Y'$, $y\prec z$. $z$是$Y$的严格上界. 因此, 集合$Z$以集合的包含关系构成全序集, 给定$Z$的任意子集$Y$和$Y'$, $Y\subseteq Y'$和$Y'\subseteq Y$必有一成立.
+	
+	令$W^*=\bigcup Z$. $m\in W^*$. 对于任意$w\in W^*$, 可知存在$z\in Z$, $w\in z$, 所以$P(z)$成立, $z$是$X$的良序子集, 以$m$为最小元. 所以$w\in X$, $W^*$是$X$的子集, $m$是$W^*$的最小值. 对于任意$w'\in W^*$, 可知存在$z'\in Z$, $w'\in z'$, 所以$P(z')$成立, $z'$是$X$的良序子集, 以$m$为最小元. 又$z\subseteq z'$和$z'\subseteq z$必有一成立. 不防假设$z\subseteq z'$, 那么$w,w'\in z'$, $w$和$w'$可比, 因此$W^*$满足全序集要求的全部条件.
+	
+	取$W^*$的任意非空子集$W$. 对于任意$w\in W$, 可知存在$Y\in Z$, $w\in Y$, 所以$P(Y)$成立, $Y$是$X$的良序子集, 以$m$为最小元. 因此$w\in W\cap Y$, $W\cap Y$是非空集. 对于任意$Y\in Z$, $Y$是$X$的良序子集. 所以$W\cap Y$也是$X$的非空良序子集. 因此存在$u\in W\cap z$, $u$是最小元.
+	
+	对于任意的$Y'\in Z$, 如果$Y\subseteq Y'$, 那么$A\cap Y'=A\cap (Y\cup (Y'\setminus Y))=(A\cap Y)\cup (A\cap (Y'\setminus Y))$. 对于任意$a\in Y$, $b\in Y'\setminus Y$, $a\preccurlyeq b$, 那么对于任意$a\in A\cap Y$, $b\in A\cap (Y'\setminus Y)$, $a\preccurlyeq b$. $u$是$A\cap Y$的最小元, $u$也是$A\cap (Y'\setminus Y)$的最小元. 因此$u$是$A\cap Y'$的最小值. 如果$Y'\subseteq Y$, 那么$u$也是$A\cap Y'$的最小值. 因此$W^*$的任意非空子集$W$总有最小值$u$. $W^*$是全序集, $W^*$的任意非空子集有最小值, $W^*$是$X$的良序子集, 以$m$为最小值.
+	
+	根据假设, $W^*$有严格上界$s(W^*)$. 下面证明$W^*\cup \{s(W^*)\}$是良序集. $W^*$是$X$上的良序子集. 根据定义可知, 单元素集是良序集. 只要$W^*\cup \{s(W^*)\}$是全序集, 那么$W^*\cup \{s(W^*)\}$就是良序集. 根据严格上界的定义, 对于任意$w\in W^*$, $w\prec s(W^*)$. 对于任意$a,b,c\in W^*\cup \{s(W^*)\}$, 如果$a,b,c\in W^*$, 自然满足全序集的要求. 如果有一个元素, 设$a\in \{s(W^*)\}$, 仍然满足全序集的要求. 所以$W^*\cup \{s(W^*)\}$是$X$上的良序子集, $m$是其最小元. 根据假设, $W^*\cup \{s(W^*)\}$存在严格上界$s(W^*\cup \{s(W^*)\})$.
+	
+	令$S=W^*\cup \{s(W^*)\}$. 下面证明$P(S)$成立, 也即证明对于任意$x\in (W^*\cup \{s(W^*)\})\setminus \{m\}$, 有$x=s(\{y\in W^*\cup \{s(W^*)\}\mid y\prec x\})$. 如果$x=s(W^*)$, 那么$\{y\in W^*\cup \{s(W^*)\}\mid y\prec x\}=W^*$, $s(\{y\in W^*\cup \{s(W^*)\}\mid y\prec x\})=s(W^*)=x$. 所以$P(W^*\cup \{s(W^*)\})$成立. 如果$x\in W^*$, 那么存在$Y\in Z$, $P(Y)$成立, $x\in Y$. 对于这个$X$的良序子集$Y$, $\{y\in W^*\cup \{s(W^*)\}\mid y\prec x\}=\{y\in Y\mid y\prec x\}$. 由于$P(Y)$成立, 对于任意$x\in Y\setminus \{m\}$, $x=s(\{y\in Y\mid y<x\})$, 这也是我们要证明的目标. 综合以上两种情况, 对于任意$x\in Y\setminus \{m\}$, $P(W^*\cup \{s(W^*)\})$成立. 所以$W^*\cup \{s(W^*)\}\in Z$. 因此$s(W^*)\in W^*$, 这和严格上界的定义矛盾.
+\end{proof}
+
+佐恩原理(Zorn's lemma)是数学研究中非常重要的一个定理.
+
+\begin{lemma}[佐恩引理]
+	给定偏序集$X$, 如果$X$上的每个链都有上界, 则$X$上有极大元.
+\end{lemma}
+
+\begin{proof}
+	根据定义. 空集是一个链. 空集在$X$上有上界, 这意味着$X$非空.
+	
+	使用反证法, 假设$X$不含有极大元. 因此对于任意$x\in X$, 存在$x'\in X$, $x\prec x'$. 因此, 给定非空偏序集$X$, 如果$X$上的每个链都有上界, 则$X$上的每个链都有严格上界. 良序集是一种特殊的链, 所以$X$上的每个良序子集都有严格上界. $X$是非空集, 根据定理\ref{2.4.1} , 对于任意$m\in X$, $X$存在一个良序子集$Y$, $Y$没有严格上界, 与假设矛盾.
+\end{proof}
+
+\begin{definition}
+	给定偏序集$(X,\preccurlyeq)$, 称$s(x)=\{y\in X\mid y\prec x\}$为$x$的前段(Initial segment), 称$\overline s(x)=\{y\in X\mid y\preccurlyeq x\}$为$x$的弱前段(Weak initial segment).
+\end{definition}
+
+\begin{proposition}
+	前段和弱前段是一一映射.
+\end{proposition}
+
+\begin{proof}
+	证明前段是一一映射.
+	
+	对于任意$x\in X$, 根据概括公理, 集合$s(x)$存在. 如果有两个$y=s(x)$和$y'=s(x)$存在. 对于任意$z\in y$, 可知$z\in y'$. 同理, 对于任意$z\in y'$, 可知$z\in y$. 因此, $y=y'$. 所以对于任意$x\in X$, 有且仅有一个$s(x)$存在, $s$是个函数.
+	
+	如果对于任意$x,x'\in X$, $s(x)=\{y\in X\mid y\prec x\}$, $s(x')=\{y\in X\mid y\prec x\}$. 如果$x\neq x'$, 不失一般性, 不防设$x\prec x'$, 那么$x'\notin \{y\in X\mid y\prec x\}$, 所以$s(x)\neq s(x')$. 所以$s(x)$是单射. 对于任意$\{y\in X\mid y\prec x\}$, 可知存在$x\in X$, $s(x)=\{y\in X\mid y\prec x\}$. 所以$s(x)$是满射. 因此$s(x)$是一一映射.
+	
+	同理可证, 弱前段也是一一映射.
+\end{proof}
+
+\begin{proposition}
+	给定偏序集$X$, 令$Y=\{\overline s(x)\mid x\in X\}$, $Y$上的包含关系构成$Y$上的偏序关系.
+	$\overline s(x)\preccurlyeq \overline s(y)$当且仅当$x\preccurlyeq y$.
+\end{proposition}
+
+\begin{proof}
+	充分性: 如果$x\preccurlyeq y$, $\overline s(x)=\{a\in X\mid a\preccurlyeq x\}$, $\overline s(y)=\{a\in X\mid a\preccurlyeq y\}$. 所以对于任意$z\in \overline s(x)$, $z\in \overline s(y)$, $s(x)\subseteq s(y)$, 也即$\overline s(x)\preccurlyeq \overline s(y)$.
+	
+	必要性: 如果$\overline s(x)\preccurlyeq \overline s(y)$, 即$\overline s(x)\subseteq \overline s(y)$. 假设$x\preccurlyeq y$不成立, 即$y\prec x$, 那么$y\preccurlyeq x$, 所以$\overline s(y)\preccurlyeq \overline s(x)$. 又$x\neq y$, 所以$\overline s(x)\neq \overline s(y)$. 因此$\overline s(y)\prec \overline s(x)$. 这与假设矛盾. $x\preccurlyeq y$.
+\end{proof}
+
+\begin{proposition}
+	给定偏序集$X$, 令$Y=\{\overline s(x)\mid x\in X\}$, $Y$上的包含关系构成$Y$上的偏序关系.
+	$\overline s(x)=\overline s(y)$当且仅当$x=y$.
+\end{proposition}
+
+\begin{proof}
+	充分性: 如果$x=y$, 根据$\overline s$的定义可知$\overline s(x)=\overline s(y)$.
+	
+	必要性: 如果$\overline s(x)=\overline s(y)$. 假设$x\neq y$, 不失一般性, 不防假设$x\prec y$. 根据$\overline s$的定义可知, $y\in \overline s(y)$, 但$y\notin \overline s(x)$, 所以$\overline s(x)\neq \overline s(y)$, 这与假设矛盾. 所以$x=y$.
+\end{proof}
+
+\begin{proposition}
+	给定偏序集$X$, 令$Y=\{\overline s(x)\mid x\in X\}$, $Y$上的包含关系构成$Y$上的偏序关系.
+	$x$是$X$上的极大元当且仅当$\overline s(x)$是$Y$上的极大元.
+\end{proposition}
+
+\begin{proof}
+	充分性: 如果$\overline s(x)$是$Y$上的极大元, 对于任意$\overline s(y)\in Y$, 如果$\overline s(x)\preccurlyeq \overline s(y)$, $\overline s(x)=\overline s(y)$. $\overline s(x)\preccurlyeq \overline s(y)$当且仅当$x\preccurlyeq y$. 所以如果$x\preccurlyeq y$, 那么$\overline s(x)\preccurlyeq \overline s(y)$, 继而$\overline s(x)=\overline s(y)$. 如果$\overline s(x)=\overline s(y)$, 那么$x=y$. $x$是$X$上的极大元.
+	
+	必要性: 如果$x$是$X$上的极大元, 那么如果$x\preccurlyeq y$, 则$x=y$. 如果$\overline s(x)\preccurlyeq \overline s(y)$, 那么$x\preccurlyeq y$, 继而$x=y$, $\overline s(x)=\overline s(y)$. 所以$\overline s(x)$是$Y$上的极大元.
+\end{proof}
+
+佐恩原理的另一个证明方法, 参见Paul Halmos的著作\emph{Naive Set Theory}.
+
+\begin{proof}
+	根据定义. 空集是一个链. 空集在$X$上有上界, 这意味着$X$非空.
+	
+	令$\mathscr X$是$X$上所有链的集合. 因为空集和$X$上的单例子集都是一个链, 所以$\mathscr X$不是空集. 对于任意$x\in \mathscr X$, 根据前提可知, $x$在$X$上有上界$U$. 因此对于任意$y\in x$, $y\preccurlyeq U$, 继而$\overline s(y)\subseteq \overline s(U)$. 根据定义$y\in \overline s(y)$, 因此$y\in \overline s(U)$. 所以$x\subseteq \overline s(U)$.
+	
+	对于$\mathscr X$上由集合的包含关系构成的一个链$\mathscr C$, 令$Y=\bigcup_{C\in \mathscr C} C$.
+	
+	如果$\mathscr C=\varnothing$, 那么$Y=\varnothing$, 因此$Y\in \mathscr X$.
+	
+	如果$\mathscr C\neq \varnothing$, 对于任意$x,y\in Y$, 存在$C_x,C_y\in \mathscr C$, 满足$x\in C_x$, $y\in C_y$. $\mathscr C$是一个链, 因此$C_x$和$C_y$是可比的, 不失一般性, 不防假设$C_x\subseteq C_y$. 那么$x\in C_y$. $x$和$y$也是可比的. 由于$C_x$和$C_y$是集合$X$上的链, 因此$x,y\in X$, $Y$也是$X$上的一个链, $Y\in \mathscr X$. 综合两种情况, 无论$\mathscr C$是否是空集, 都有$Y\in \mathscr X$. 对于任意$c\in \mathscr C$, $c\in \mathscr X$. $c$和$Y$是可比的. 对于任意$d\in c$, $d\in Y$, 所以$c\subseteq Y$, $Y$是$\mathscr C$上的最大元. 因此$\mathscr X$上每个链都有最大元.
+	
+	假设$\mathscr X$上有极大元$M$, 那么$M$是$X$上的一个链, 根据前提可知, $M$在$X$上有上界. 根据选择公理, 任意选择
+	
+	$\mathscr C$是在$\mathscr X$上的链, 根据前提可知, $\mathscr C$在$\mathscr X$上有上界$\mathscr M$.
+\end{proof}

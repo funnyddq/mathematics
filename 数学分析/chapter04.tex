@@ -1,0 +1,481 @@
+\chapter{偏序关系和全序关系}
+\section{偏序关系}
+\begin{definition}[偏序关系]
+	给定任意一个集合$S$和$S$上任意一个二元关系$R$, 若$R$满足:
+	\begin{enumerate}
+		\item 反对称性(Anti-symmetric): $\forall a,b\in S$($a\mathrel Rb\wedge b\mathrel Ra\rightarrow a=b)$;
+		\item 传递性(Transitive): $\forall a,b,c\in S$($a\mathrel Rb\wedge b\mathrel Rc\rightarrow a\mathrel Rc)$,
+	\end{enumerate}
+	则称$R$是$S$上的偏序关系(partial order relation), 称$S$是关于$R$的偏序集(partial order set), 称$(S,R)$为偏序结构(partial order structure).
+\end{definition}
+
+\begin{definition}[非严格偏序关系]
+	给定任意一个集合$S$和$S$上任意一个二元关系$\preccurlyeq$, 若$\preccurlyeq$满足:
+	\begin{enumerate}
+		\item 自反性(Reflexive): $\forall a\in S$($a\preccurlyeq a$);
+		\item 反对称性(Anti-symmetric): $\forall a,b\in S$($a\preccurlyeq b\wedge b\preccurlyeq a\rightarrow a=b$);
+		\item 传递性(Transitive): $\forall a,b,c\in S$($a\preccurlyeq b\wedge b\preccurlyeq c\rightarrow a\preccurlyeq c$),
+	\end{enumerate}
+	则称$\preccurlyeq$是$S$上的非严格偏序关系(non-strict partial order relation), 弱偏序关系(weak partial order relation)或自反偏序关系(reflexive partial order relation), 称$S$为关于$R$的非严格偏序集(non-strict partial order set), 弱偏序集(weak partial order set)或自反偏序集(reflexive partial order set), 称$(S,\preccurlyeq)$为非严格偏序结构(non-strict partial order structure).
+\end{definition}
+
+
+根据定义, 空集是一个关于空关系的非严格偏序集, 只含有一个元素的单例集(Singleton)也是非严格偏序集.
+
+\begin{proposition}
+	集合$X$上的包含关系构成$X$上的非严格偏序关系.
+\end{proposition}
+
+\begin{proof}
+	集合$X$上的包含关系$\subseteq$满足以下条件:
+	\begin{enumerate}
+		\item 对于任意$a\in X$, $a\subseteq a$;
+		\item 对于任意$a,b\in X$, $a\subseteq b$且$b\subseteq a$蕴含$a=b$;
+		\item 对于任意$a,b,c\in X$, $a\subseteq b$且$b\subseteq c$蕴含$a=c$.
+	\end{enumerate}
+	
+	所以集合$X$上的包含关系构成$X$上的非严格偏序关系.
+\end{proof}
+
+\begin{definition}[严格偏序关系]
+	给定集合$S$, ``$\preccurlyeq$''是$S$上的二元关系, 若``$\preccurlyeq$''满足:
+	\begin{enumerate}
+		\item 反自反性(Irreflexive/Anti-reflexive): $\forall a\in S, \neg(a\prec a)$;
+		\item 非对称性(Asymmetric): $\forall a,b\in S, a\prec b\rightarrow\neg(b\prec a)$;
+		\item 传递性(Transitive): $\forall a,b,c\in S, a\prec b\wedge b\prec c\rightarrow a\prec c$;
+	\end{enumerate}
+	则称``$\prec$''是$S$上的严格偏序或反自反偏序, 称$(S,\prec)$为严格偏序结构.
+\end{definition}
+
+根据定义, 空集是一个严格偏序集, 只含有一个元素的单例集(Singleton)也是严格偏序集.
+
+严格偏序与有向无环图(DAG)有直接的对应关系。一个集合上的严格偏序的关系图就是一个有向无环图。
+
+\begin{definition}[偏序关系]
+	给定集合$S$, $R$是$S$上的二元关系, 若$R$满足:
+	\begin{enumerate}
+		\item 反对称性(Anti-symmetric): $\forall a,b\in S$, $aRb\wedge bRa\rightarrow a=b$;
+		\item 传递性(Transitive): $\forall a,b,c\in S, aRb\wedge bRc\rightarrow aRc$;
+	\end{enumerate}
+	则称$R$是$S$上的偏序关系, 称$S$为$R$偏序集, 称$(S,R)$为偏序结构.
+\end{definition}
+
+\begin{proposition}
+	非严格偏序关系和严格偏序关系是偏序关系.
+\end{proposition}
+
+\begin{proof}
+	给定集合$S$和$S$上的非严格偏序关系$R$. 根据定义, $R$满足反对称性和传递性, 所以$R$是偏序关系.
+	
+	给定集合$S$和$S$上的强偏序关系$R'$. 对于任意$a,b\in S$, 如果$aR'b$, 那么$\neg(bR'a)$, $aR'b\wedge bR'a$为假, 所以$aRb\wedge bRa\rightarrow a=b$. $R'$满足传递性, 所以$R'$是偏序关系.
+\end{proof}
+
+下面的命题是否成立? ``偏序关系要么是非严格偏序关系, 要么是严格偏序关系.'' 答案是否定的. 给定集合$S=\{a,b,c\}$, 给定$S$上的偏序关系$R=\{(a,a)\}$. 可以验证, $R$是偏序关系, 但是$R$不满足自反性, 也不满足反自反性.
+
+\begin{proposition}
+	\begin{enumerate}
+		\item 给定集合上的一个非严格偏序``$\preccurlyeq$'', 可以诱导出S上的一个严格偏序``$\prec$'', 只需按如下方式定义: $\forall a,b\in S, (a\prec b\leftrightarrow a\preccurlyeq b \wedge a\neq b)$;
+		\item 给定集合上的一个严格偏序``$\prec$'', 可以诱导出S上的一个非严格偏序``$\preccurlyeq$'', 只需按如下方式定义: $\forall a,b\in S, (a\preccurlyeq b\leftrightarrow a\prec b \vee a=b)$;
+		\item 给定集合上的一个非严格偏序``$\preccurlyeq$'', 其逆关系``$\succcurlyeq$''也是S上的一个非严格偏序;
+		\item 给定集合上的一个严格偏序``$\prec$'', 其逆关系``$\succ$''也是S上的一个非严格偏序.
+	\end{enumerate}
+\end{proposition}
+
+TBD: 证明.
+
+\begin{definition}
+	给定任意一个偏序结构$(X,\preccurlyeq)$.
+	
+	如果存在$a\in X$, 对于任意$b\in X$, 都有$b\preccurlyeq a\rightarrow a=b$, 那么称$a$是$X$上的极小元(minimal element).
+	
+	如果存在$a\in X$, 对于任意$b\in X$, 都有$a\preccurlyeq b\rightarrow a=b$, 那么称$a$是$X$上的极大元(maximal element).
+	
+	如果存在$a\in X$, 对于任意$b\in X$, 都有$a\preccurlyeq b$, 那么称$a$是$X$上的最小元(least element).
+	
+	如果存在$a\in X$, 对于任意$b\in X$, 都有$b\preccurlyeq a$, 那么称$a$是$X$上的最大元(greatest element).
+\end{definition}
+
+由外延公理可知, 如果$X$上存在最小元或最大元, 这个最小元或最大元是唯一的.
+
+\begin{definition}
+	给定任意一个严格偏序结构$(X,\prec)$.
+	
+	如果存在$a\in X$, 对于任意$b\in X$, 都有$b\not \prec a$, 那么称$a$是$X$上的严格极小元(strictly minimal element).
+	
+	如果存在$a\in X$, 对于任意$b\in X$, 都有$a\not \prec b$, 那么称$a$是$X$上的严格极大元(strictly maximal element).	
+	
+	如果存在$a\in X$, 对于任意$b\in X$, 都有$a\prec b$或$a=b$, 那么称$a$是$X$上的严格最小元(strictly least element).
+	
+	如果存在$a\in X$, 对于任意$b\in X$, 都有$b\prec a$或$b=a$, 那么称$a$是$X$上的严格最大元(strictly greatest element).
+\end{definition}
+
+由外延公理可知, 如果$X$上存在严格最小元或严格最大元, 这个严格最小元或严格最大元是唯一的.
+
+极小元和极大元的概念是建立在非严格偏序关系上的. 极小元和极大元的概念还可以进一步推广到集合上的一般二元关系上, 这些二元关系可能不是非严格偏序关系. 给定集合$X$和$X$上的二元关系$R$, 如果存在$a\in X$, 对于任意$b\in X$, 如果$a\mathrel Rb\rightarrow a=b$, 那么称$a$是$X$上的极大元(maximal element); 如果存在$a\in X$, 对于任意$b\in X$, 如果$b\mathrel Ra\rightarrow a=b$, 那么称$a$是$X$上的极小元(minimal element).
+
+给定集合$X$和$X$上的二元关系$R$. 使用一阶逻辑, $X$上有关于$R$的极小元表述如下:
+\[
+\exists a\in X,\forall b\in X((b\mathrel Ra)\rightarrow a=b).
+\]
+$X$上没有对于$R$的极小元表述如下:
+\[
+\forall a\in X,\exists b\in X((b\mathrel Ra)\wedge a\neq b).
+\]
+$X$上有对于$R$的极大元表述如下:
+\[
+\exists a\in X,\forall b\in X((a\mathrel Rb)\rightarrow a=b).
+\]
+$X$上没有对于$R$的极大元表述如下:
+\[
+\forall a\in X,\exists b\in X((a\mathrel Rb)\wedge a\neq b).
+\]
+
+建立了广义的极小元和极大元的概念后, 我们回顾下正则公理. 给定集合$X$, 我们考虑集合上的``$\in$''关系. 正则公理实际上是说, 对于任意非空集合$X$, $X$上必然存在``$\in$''这个二元关系上的极小元.
+
+严格极小元和严格极大元的概念是建立在严格偏序关系上的. 严格极小元和严格极大元的概念还可以进一步推广到集合上的一般二元关系上, 这些二元关系可能不是严格偏序关系. 给定集合$X$和$X$上的二元关系$R$, 如果存在$a\in X$, 对于任意$b\in X$, 都有$b\not \mathrel Ra$, 那么称$a$是$X$上的严格极小元(strictly maximal element); 如果存在$a\in X$, 对于任意$b\in X$, 都有$a\not \mathrel Rb$, 那么称$a$是$X$上的严格极大元(minimal element).
+
+给定集合$X$和$X$上的二元关系$R$. 使用一阶逻辑, $X$上有关于$R$的严格极小元表述如下:
+\[
+\exists a\in X,\forall b\in X(b\not \mathrel Ra).
+\]
+$X$上没有对于$R$的严格极小元表述如下:
+\[
+\forall a\in X,\exists b\in X(b\mathrel Ra).
+\]
+$X$上有对于$R$的严格极大元表述如下:
+\[
+\exists a\in X,\forall b\in X(a\not \mathrel Rb).
+\]
+$X$上没有对于$R$的严格极大元表述如下:
+\[
+\forall a\in X,\exists b\in X(a\not \mathrel Rb).
+\]
+
+根据定义可知, 在集合$X$的一般二元关系$R$上, $R$的严格极小元是极小元, $R$的严格极大元是极大元.
+
+\begin{proposition}
+	给定任意集合$A$和$B$, $\neg (A\in B)\wedge(B\in A)$是重言式.
+\end{proposition}
+
+\begin{proof}
+	如果$A\in B$, 令$C=\{A,B\}$. 可知$B\cap C=A$. $B$不是$C$的极小元. 根据正则公理, 非空集合必有极小元, 那么$A$是$C$的极小元. 所以$B\notin C$. $(A\in B)\wedge(B\in A)$是矛盾式, 所以$\neg (A\in B)\wedge(B\in A)$是重言式.
+	
+	如果$A\notin B$, $(A\in B)\wedge(B\in A)$是矛盾式, 所以$\neg (A\in B)\wedge(B\in A)$是重言式.
+	
+	综合以上两种情况, $\neg (A\in B)\wedge(B\in A)$是重言式.
+\end{proof}
+
+\begin{definition}
+	给定偏序集$(X, \preccurlyeq)$, $Y$是$X$的任意子集.
+	
+	如果存在$M\in X$, 对于任意$y\in Y$, 都有$y\preccurlyeq M$, 那么称$M$是$Y$的上界(Upper bound), 称$Y$是有上界的(Bounded from above).
+	如果存在$m\in X$, 对于任意$y\in Y$, 都有$m\preccurlyeq y$, 那么称$m$是$Y$的下界(Lower bound), 称$Y$是有下界的(Bounded from below).
+	如果$Y$既有上界, 又有下界, 则称$Y$是有界的(Bounded).
+\end{definition}
+
+\begin{definition}[全序关系]
+	给定集合$S$, ``$\leq$''是$S$上的二元关系, 若``$\leq$''满足:
+	\begin{enumerate}
+		\item 自反性(Reflexivity): $\forall a\in S, a\leq a$;
+		\item 反对称性(Anti-symmetry): $\forall a,b\in S, a\leq b\wedge b\leq a\rightarrow a=b$;
+		\item 传递性(Transitivity): $\forall a,b,c\in S, (a\leq b\wedge b\leq c)\rightarrow (a\leq c)$;
+		\item 完全性(Strongly Connected): $\forall a,b\in S, (a\leq b\vee b\leq a)$;
+	\end{enumerate}
+	则称``$\leq$''是$S$上的全序关系(Total order).
+\end{definition}
+
+根据定义, 空集是一个全序集, 只含有一个元素的单例集(Singleton)也是全序集.
+
+如果全序集上存在最大元, 通常称该最大元为最大值. 如果全序集上存在最小元, 通常称该最小元为最小值.
+
+\begin{proposition}
+	全序集的任意子集也是全序集.
+\end{proposition}
+
+\begin{proof}
+	给定全序集$X$以及$X$的任意子集$Y$. 如果$Y$是空集, 根据定义, 空集是全序集.
+	
+	如果$Y$不是非空集, 则$Y$的任意元素也是$X$的元素. 所以$Y$满足全序关系要求的四个条件, $Y$也是全序集.
+\end{proof}
+
+\begin{definition}[链]
+	给定偏序集合$(S,\preccurlyeq)$, 集合$S$上任一子集如果满足``$\preccurlyeq$''上的全序关系, 则称该子集为链(Chain).
+\end{definition}
+
+根据定义, 空集是一个链, 只含有一个元素的单例集(Singleton)也是链.
+
+\begin{definition}
+	给定任意一个非严格偏序结构$(X,\preccurlyeq)$. 称$R$的一个链$C$是降链, 如果$C$上没有最小元. 易证$C$是无穷集合, 也称$C$为无穷降链. 称$R$的一个链$C$是升链, 如果$C$上没有最大元. 易证$C$是无穷集合, 也称$C$为无穷升链.
+\end{definition}
+
+降链和升链也可以推广到一般的集合$X$和$X$的二元关系$R$上.
+
+\begin{definition}
+	给定任意一个集合$X$和$X$上的任意一个二元关系$R$. 如果对于任意$n\in \mathbb N$都有$a_{n+1}\mathrel Ra_n$, 称$(a_n)$是$X$上关于$R$的一个可数降链. 如果对于任意$n\in \mathbb N$都有$a_n\mathrel Ra_{n+1}$, 称$(a_n)$是$X$上关于$R$的一个可数升链.
+\end{definition}
+
+\begin{definition}
+	给定任意一个全序结构$(X,\leq)$和$X$上的一个数列$(a_n)_{n\in \mathbb N}$.
+	
+	如果对于任意$n\in \mathbb N$, 都有$a_{n+1}\leq a_n$, 称数列$(a_n)$为递减数列(descending sequence/decreasing sequence)或非增数列(non-increasing sequence)或单调非增数列(monotone non-increasing sequence).
+	
+	如果对于任意$n\in \mathbb N$, 都有$a_{n+1}<a_n$, 称数列$(a_n)$为严格递减数列(strictly descending sequence/strictly decreasing sequence).
+	
+	如果对于任意$n\in \mathbb N$, 都有$a_n\leq a_{n+1}$, 称数列$(a_n)$为递增数列(ascending sequence/increasing sequence)或非减数列(non-decreasing sequence)或单调非减数列(monotone non-decreasing sequence).
+	
+	如果对于任意$n\in \mathbb N$, 都有$a_n<a_{n+1}$, 称数列$(a_n)$为严格递增数列(strictly ascending sequence/strictly increasing sequence).
+\end{definition}
+
+\begin{proposition}
+	给定任意一个全序结构$(X,\leq)$和$X$上的一个数列$(a_n)_{n\in \mathbb N}$, $(a_n)$是递减数列当且仅当对于任意$m,n\in \mathbb N$, 如果$m\leqslant n$, 都有$a_n\leq a_m$.
+\end{proposition}
+
+\begin{proof}
+	充分性: 假设对于任意$m,n\in \mathbb N$, 如果$m\leqslant n$, 都有$a_n\leq a_n$. 对于任意$i\in \mathbb N$, 取$m=i$, $n=i+1$, 可知$m\leq n$, 所以$a_n\leqslant a_m$, 也即$a_{i+1}\leq a_i$, 所以$(a_i)$是递减数列.
+	
+	必要性: 假设$(a_n)$是递减数列. 对于任意$i\in \mathbb N$, 都有$a_{i+1}\leq a_i$. 对于任意$m,n\in \mathbb N$, 假设$m\leqslant n$. 如果$m=n$, $a_n=a_m$, 所以$a_n\leq a_m$. 如果$m<n$, 那么$m\leqslant m+1\leqslant \cdots\leqslant n$, 所以$a_n\leq \cdots \leq a_{m+1}\leq a_m$, $a_n\leq a_m$. 综合以上两种情况, $a_n\leq a_m$.
+\end{proof}
+
+\section{良基关系/严格良基关系}
+\begin{definition}
+	给定任意集合$X$和$X$上的任意二元关系$R$, 如果$X$的任意非空子集都有$R$上的极小元, 称$R$是$X$上的良基关系(well-founded relation), 称$X$是关于$R$的良基集.
+\end{definition}
+
+\begin{definition}
+	给定任意集合$X$和$X$上的任意二元关系$R$, 如果$X$的任意非空子集都有$R$上的严格极小元, 称$R$是$X$上的严格良基关系(strictly well-founded relation), 称$X$是关于$R$的严格良基集.
+\end{definition}
+
+根据定义可知, 严格良基关系是良基关系.
+
+\begin{proposition}
+	给定集合$X$和$X$上的二元关系$R$, 如果$R$是$X$上的严格良基关系, 那么$R$满足反自反性和非对称性.
+\end{proposition}
+
+\begin{proof}
+	如果$R$是$X$上的严格良基关系, 对于$X$的任意非空子集$A$, 存在$a\in A$, 对于任意$x\in A$, $x\not \mathrel Ra$. 如果$X$是空集, $R$满足反自反性和非对称性. 下面考虑$X$不是空集的情况.
+	
+	$X$是$X$的非空子集, 所以存在$a\in X$, 对于任意$x\in X$, $x\not \mathrel Ra$. 如果$R$不满足反自反性, 那么存在$b\in X$, $b\mathrel Rb$. 考虑集合$B=\{b\}$, $B$是$X$的非空子集. 因为$X$是关于$R$的严格良基集, 所以$B$有严格极小元. 对于任意$y\in b$, $y\not \mathrel Ry$. $b\in B$, 所以$b\not \mathrel Rb$. 出现矛盾. 所以$R$满足反自反性.
+	
+	如果$R$不满足非对称性, 对于任意$c,d\in X$, 如果$c\mathrel Rd$, 那么$d\not \mathrel Rc$. 考虑集合$C=\{c,d\}$, $C$是$X$的非空子集. 因为$X$是关于$R$的严格良基集, 所以$C$有严格极小元. 如果$c\mathrel Rd$, $d$不是$C$的严格极小元. 那么$c$是$C$的严格极小元, 所以对于任意$z\in C$, $z\not \mathrel Rc$. $d\in C$, 所以$d\not \mathrel Rc$. 所以$R$满足反自反性.
+	
+	综合以上情况, 无论$X$是否是空集, $R$满足反自反性和非对称性.
+\end{proof}
+
+\begin{proposition}
+	给定集合$X$和$X$上的二元关系$R$, 如果$R$是$X$上的良基关系且$R$满足反自反性, 那么$R$是$X$上的严格良基关系.
+\end{proposition}
+
+\begin{proof}
+	如果$R$是$X$上的良基关系且$R$满足反自反性, 对于$X$的任意非空子集$A$, 存在$a\in A$, 对于任意$x\in A$, 如果$x\mathrel Ra$, 那么$x=a$, 即$x\mathrel Rx$. 又$R$满足反自反性, 对于任意$x\in A$, $x\not \mathrel Rx$. 所以对于任意$x\in A$, $x\not \mathrel Ra$. 所以$a$是$A$上的严格极小元, $R$是$X$上的严格良基关系.
+\end{proof}
+
+\begin{proposition}
+	给定集合$X$和$X$上的二元关系$R$, $R$是$X$上的严格良基关系当且仅当$X$上没有关于$R$的可数无穷降链.
+\end{proposition}
+
+\begin{proof}
+	充分性: 假设$S$上没有关于$R$的可数无穷降链. 假设$R$不是$X$上的严格良基关系, 所以存在一个$S$的非空子集$A$, $A$上没有严格极小元. 对于任意$a\in A$, 存在$b\in A$, $b\mathrel Ra$. 所以在$A$上存在一个关于$R$的右全关系. 根据依赖选择公理, 在$A$上存在一个数列$(x_n)_{n\in\mathbb N}$满足: 对任意$n\in \mathbb N$, $x_{n+1}\mathrel Rx_n$成立. 这个数列就是$A$上的可数无穷降链. $A$是$S$的子集, 所以这个数列也是$S$上的可数无穷降链, 与假设矛盾. 所以$R$是$X$上的严格良基关系.
+	
+	必要性: 假设$R$是$X$上的严格良基关系. 如果$X$是空集, $X$上没有关于$R$的可数无穷降链. 下面考虑$X$不是空集的情况. 假设$X$上有关于$R$的可数无穷降链$C$, 对于任意$n\in \mathbb N$, $a_{n+1}\mathrel Ra_n$. 考虑集合$C=\{a_n\in X\mid n\in \mathbb N\wedge a_{n+1}\mathrel Ra_n\}$. $C$是$X$的非空子集, 所以$C$上存在严格极小元, 不防设为$a_i$, 其中$i\in \mathbb N$. 但是根据$C$的定义, 存在$a_{i+1}$, $a_{i+1}\mathrel Ra_i$. $a_i$不是$C$的严格极小元, 与假设矛盾. 所以$X$上没有关于$R$的可数无穷降链.
+\end{proof}
+
+\begin{definition}[良偏序集]
+	给定任意一个偏序结构$(S,R)$, 如果$R$是$S$上的良基关系, 则称$S$为关于$R$的良偏序集(well-founded partial order).
+\end{definition}
+
+\begin{definition}[良序集]
+	给定全序集$(S,\leq)$, 如果$S$的任意非空子集存在最小值, 则称$S$为关于$\leq$的良序集(well-ordered set).
+\end{definition}
+
+根据定义可知, 空集是良序集, 只含有一个元素的单例集(Singleton)也是良序集.
+
+\begin{proposition}
+	良序集的任意子集也是良序集.
+\end{proposition}
+
+\begin{proof}
+	给定良序集$X$以及$X$的任意子集$Y$. 如果$Y$是空集, $Y$是$X$上的良序集.
+	
+	如果$Y$是非空集, 则$Y$也是全序集. $Y$的任意非空子集都是$X$的非空子集, $X$是良序集, 根据定义, 良序集的任意非空子集都有最小元. 所以$Y$的任意非空子集有最小元. 因此$Y$是$X$上的良序集.
+\end{proof}
+
+\begin{proposition}
+	非空偏序集存在非空良序子集.
+\end{proposition}
+
+\begin{proof}
+	给定任意非空偏序集$X$, 根据选择公理, 可以元素$x\in X$. 单元素集合$\{x\}$即是$X$的良序子集. $\{x\}$是$X$的子集, 且符合全序集的全部要求. 对于任意$x\in \{x\}$, $x\preccurlyeq x$, 所以$x$是$\{x\}$的最小值.
+\end{proof}
+
+\begin{proposition}
+	设$X$是偏序集, $Y$和$Y'$是$X$上的良序子集，则$Y\cup Y'$是良序集当且仅当$Y\cup Y'$是全序集.
+\end{proposition}
+
+\begin{proof}
+	充分性: 如果$Y\cup Y'$是全序集, 对任意$Y\cup Y'$的非空子集$Z$, $Z=Z\cap (Y\cup Y')=(Z\cap Y)\cup (Z\cap Y')$. $Z$是$X$上的良序子集, 所以$Z\cap Y$和$Z\cap Y'$都是$X$上的良序子集. 设$Z\cap Y$上有最小元$y$, $Z\cap Y'$上有最小元$y'$. 由于$Y\cup Y'$是全序集, 所以$y$和$y'$可比, 设$m=\min (y, y')$. 对于任意$x\in Y\cup Y'$, 如果$x\in Y$, $y\preccurlyeq x$, 又$m\preccurlyeq y$, 所以$m\preccurlyeq x$; 如果$x\in Y'$, $y'\preccurlyeq x$, 又$m\preccurlyeq y'$, 所以$m\preccurlyeq x$. 所以$m$就是$Z$上的最小元.
+	
+	必要性: 根据定义可知, 如果$Y\cup Y'$是良序集, 那么$Y\cup Y'$是全序集.
+\end{proof}
+
+\begin{definition}[链]
+	给定偏序集合$(S,\preccurlyeq)$, 集合$S$上任一子集如果满足``$\preccurlyeq$''上的全序关系, 则称该子集为链(Chain).
+\end{definition}
+
+\begin{proposition}
+	\begin{enumerate}
+		\item 给定集合上的一个非严格偏序``$\preccurlyeq$'', 可以诱导出S上的一个严格偏序``$\prec$'', 只需按如下方式定义: $\forall a,b\in S, (a\prec b\leftrightarrow a\preccurlyeq b \wedge a\neq b)$;
+		\item 给定集合上的一个严格偏序``$\prec$'', 可以诱导出S上的一个非严格偏序``$\preccurlyeq$'', 只需按如下方式定义: $\forall a,b\in S, (a\preccurlyeq b\leftrightarrow a\prec b \vee a=b)$;
+		\item 给定集合上的一个非严格偏序``$\preccurlyeq$'', 其逆关系``$\succcurlyeq$''也是S上的一个非严格偏序;
+		\item 给定集合上的一个严格偏序``$\prec$'', 其逆关系``$\succ$''也是S上的一个非严格偏序.
+	\end{enumerate}
+\end{proposition}
+
+\section{预序关系}
+\begin{definition}[预序关系]
+	给定集合$S$, ``$\precsim$''是$S$上的二元关系, 若``$\precsim$''满足:
+	\begin{enumerate}
+		\item 自反性(Reflexive): $\forall a\in S$, $a\preccurlyeq a$;
+		\item 传递性(Transitive): $\forall a,b,c\in S$, $a\preccurlyeq b\wedge b\preccurlyeq c\rightarrow a\preccurlyeq c$;
+	\end{enumerate}
+	则称``$\precsim$''是$S$上的预序关系或先序关系(preorder/quasiorder relation), 称$(S,\precsim)$为预序关系结构.
+\end{definition}
+
+给定整数$p$, 正整数$q$, 定义$p//q$为小于等于$p/q$的最大整数. 定义自然数$\mathbb N$上的关系如下: 给定$c\in \mathbb N$且$c\neq 0$, 对于任意$a,b\in \mathbb N$, $aRb$当且仅当$a//c\leqslant b//c$. 可以验证$R$是$\mathbb N$上的预序关系. 以$c=4$为例, 可知$0R1$, $1R0$, 但是$0\neq 1$. $R$不满足反对称性.
+
+给定预序集$X$, 定义在$X$上的等价关系$\sim$如下: 对于任意$a,b\in X$, $a\sim b$当且仅当$a\precsim b$且$b\precsim a$. 定义商集$X/\sim$上的关系$R'$如下: $[a]R'[b]$当且仅当$aRb$. 可以验证$R'$是$X/\sim$上的偏序关系.
+
+\section{函数}
+\begin{definition}[函数]
+	给定集合$X$和$Y$上的二元关系$R$, 如果对于任一$x\in X$, 有且仅有一个$y\in Y$满足$xRy$, 称$R$是集合$X$和$Y$上的函数$f$, 记作:
+	\begin{align*}
+		f\colon & X\rightarrow Y \\
+		& x\mapsto f(x).
+	\end{align*}
+	
+	称$X$为函数$f$的定义域(Domain/Domain of definition), 记作$\dom f$; 称集合$Y$为函数$f$的上域/陪域(Codomain); 称集合$\{f(x)\mid x\in X\}$为函数$f$的值域(Domain of range), 记作$\ran f$.
+\end{definition}
+
+\begin{proposition}
+	函数是一个关系, 这个关系是唯一的.
+\end{proposition}
+
+\begin{proof}
+	给定函数$f\colon X\rightarrow Y$. 根据函数的定义可知, 函数本身就是关系. 假设有两个关系$R$和$R'$都是函数$f$. 对于任意$(x,y)\in R$, 可知$y=f(x)$, 所以$(x,y)\in R'$. 同理, 对于任意$(x,y)\in R'$, 可知$y=f(x)$, 所以$(x,y)\in R$. 所以$R=R'$.
+\end{proof}
+
+\begin{corollary}
+	对于任意$x\in X$, 有且仅有一个$y\in \dom f$满足$y=f(x)$.
+\end{corollary}
+
+\begin{proof}
+	给定函数$f\colon X\rightarrow Y$. 根据函数的定义可知, 对于任意$x\in X$, 有且仅有一个$y\in Y$满足$y=f(x)$. 由函数的值域的定义可知, 对于对于任意$x\in X$, $f(x)\in \dom f$, 所以$y\in \dom f$.
+\end{proof}
+
+\begin{definition}[单射]
+	给定函数$f\colon X\rightarrow Y$. 如果对于任意$a,b\in X$, 如果$a\neq b$, 则$f(a)\neq f(b)$, 那么称函数$f$是单射(Injection), 或者一对一的(One to one).
+\end{definition}
+
+\begin{corollary}
+	单射的一个等价定义是: 给定函数$f\colon X\rightarrow Y$. 对于任意$a,b \in X$, 如果$f(a)=f(b)$, 则$a=b$, 那么函数$f$是单射.
+\end{corollary}
+
+\begin{proof}
+	充分性: 假设函数$f$是单射. 如果$f(a)=f(b)$, 且$a\neq b$, 由于$f$是单射, 可知$f(a)\neq f(b)$, 与已知条件矛盾. 所以$a=b$.
+	
+	必要性: 对于任意$a,b \in X$, 如果$f(a)=f(b)$, 则$a=b$. 如果$a\neq b$, 那么$f(a)\neq f(b)$. 否则, 如果$f(a)=f(b)$, 可得$a=b$, 与假设矛盾. 所以$f$是单射.
+\end{proof}
+
+\begin{corollary}
+	单射的另一个等价定义是: 给定函数$f\colon X\rightarrow Y$. 对于任意$y\in Y$, 如果存在$x\in X$, 满足$f(x)=y$, 那么这个$x$是唯一的. 那么函数$f$是单射.
+\end{corollary}
+
+\begin{proof}
+	充分性: 如果函数$f$是单射, 对于任意$y\in Y$, 如果存在$x\in X$, 满足$f(x)=y$, 那么这个$x$是唯一的. 否则如果存在$x'\neq x$, 且$f(x')=y$, 可知函数$f$不是单射, 与已知条件矛盾.
+	
+	必要性: 对于任意$y\in Y$, 如果存在$x\in X$, 满足$f(x)=y$, 那么这个$x$是唯一的. 如果$a\neq b$, $f(a)\neq f(b)$. 否则, $f(a)=f(b)$, 与假设矛盾. 所以$f$是单射.
+\end{proof}
+
+\begin{definition}[满射]
+	给定函数$f\colon X\rightarrow Y$. 如果对于任意$y\in Y$, 存在$x\in A$, 满足$f(x)=y$, 那么称函数$f$是满射(Surjection), 或者是到上(Onto).
+\end{definition}
+
+根据满射的定义可知, 给定函数$f\colon X\rightarrow Y$, 如果$f$是满射, 则$\ran f=Y$.
+
+\begin{definition}[一一映射]
+	如果函数$f$既是单射, 又是满射, 那么称函数$f$是一一映射(Bijection).
+\end{definition}
+
+\begin{proposition}
+	一一映射的逆关系也是一一映射.
+\end{proposition}
+
+\begin{proof}
+	给定一一映射$f\colon X\rightarrow Y$. 假设$f$代表的关系为$R$, $R$的逆关系为$R'$. 由于$f$是满射, 对于任意$y\in Y$, 存在$x\in X$, 满足$f(x)=y$, 即$xRy$, 也即$yR'x$. 所以关系$R'$的定义域是$Y$. 由于$f$是单射, 对于任意$y\in Y$, 仅存在一个$x\in X$, 满足$f(x)=y$, 即$xRy$, 也即$yR'x$. 所以关系$R'$是一个函数. 设这个函数为$f^{-1}$. 由于$f$是函数, 对于任意$x\in X$, 存在一个$y\in Y$, 满足$f(x)=y$, 即$xRy$, 也即$yR'x$, 所以函数$f^{-1}$是满射, $f^{-1}$的值域是$X$. 由于$f$是函数, 对于任意$x\in X$, 仅存在一个$y\in Y$, 满足$f(x)=y$, 即$xRy$, 也即$yR'x$, 所以函数$f^{-1}$是单射. $f^{-1}$是单射也是满射, 所以$f^{-1}$是一一映射.
+\end{proof}
+
+\begin{definition}
+	给定一一映射$f\colon X\rightarrow Y$, 称函数$f$的逆关系为函数$f$的反函数(Inverse Function), 记作$f^{-1}$. 
+\end{definition}
+
+根据一一映射的定义, 给定一一映射$f$和$f$的反函数$f'$, $\ran f'=\dom f$, $\dom f'=\ran f$.
+
+\begin{proposition}
+	给定函数$f\colon X\rightarrow Y$. 存在一个函数$f'$是从集合$X$到$\ran f$的满射.
+\end{proposition}
+
+\begin{proof}
+	给定函数$f\colon X\rightarrow Y$. 取$f'=\{(x,y)\in f\mid y\in \ran f\}$. 对于任意$(x,y)\in f'$, $(x,y)\in f$. 对于任意$(x,y)\in f$, $y\in \ran f$, 所以$(x,y)\in f'$. $f$和$f'$的映射关系相同, 仅仅是值域不同. 根据函数值域的定义, 对于任意$y\in Ran f$, 存在$x\in X$满足$y=f(x)$, 所以$f'$是从集合$X$到$\ran f$的满射.
+\end{proof}
+
+\begin{proposition}
+	给定单射$f\colon X\rightarrow Y$. 存在一个函数$f'$是从集合$X$到$\ran f$的一一映射.
+\end{proposition}
+
+\begin{proof}
+	给定函数$f\colon X\rightarrow Y$. 取$f'=\{(x,y)\in f\mid y\in \ran f\}$. $f'$是从集合$X$到$\ran f$的满射. $f$和$f'$的映射关系相同, 仅仅是值域不同. $f$是单射, 所以$f'$是从集合$X$到$\ran f$的单射.  $f$是满射, $f$是单射, 所以$f'$是从集合$X$到$\ran f$的一一映射.
+\end{proof}
+
+\begin{proposition}
+	给定集合$X$和$Y$, 如果存在一个从$X$到$Y$的单射, 那么存在一个从$Y$到$X$的满射.
+\end{proposition}
+
+\begin{proof}
+	如果存在一个从$X$到$Y$的单射$f$, 取$f'=\{(x,y)\in f\mid y\in \ran f\}$, $f'$是从集合$X$到$\ran f$的一一映射. $(f')^{-1}$是从集合$\ran f$到$X$的一一映射, 也是从集合$\ran f$到$X$的满射. 设$g\colon Y\rightarrow X$. 如果$y \in \ran f$, 规定$g(y)=(f')^{-1}$. 如果$y\notin \ran f$, 根据选择公理, 可以从集合$X$中任意选择一个元素$a$, 规定$g(y)=a$. 对于任意$y\in Y$, 有且仅有唯一的$x\in X$, 满足$x=g(y)$. 对于任意$x\in X$, 都有$y\in Y$满足$x=g(y)$. 所以$x=g(y)$是从$Y$到$X$的满射. 
+\end{proof}
+
+\begin{definition}
+	给定集合$X$, 称
+	\begin{align*}
+		f\colon & X\rightarrow X \\
+		& x\mapsto x
+	\end{align*}
+	为$X$上的恒等映射(Identity mapping/Identity function/Identity transformation), 记作$I_X$.
+\end{definition}
+
+\begin{proposition}
+	给定集合$X$和$X$上的函数$f$和$g$, 如果$g\circ f=I_X$, 那么$f$是单射, $g$是满射.
+\end{proposition}
+
+\begin{proof}
+	如果$g\circ f=I_X$, 对于任意$x\in X$, $g\circ f(x)=x$. 如果$f$不是单射, 那么存在$x_1,x_2\in X$, $x_1\neq x_2$, $f(x_1)=f(x_2)$. 那么$g\circ f(x_1)=g\circ f(x_2)$. 又$g\circ f(x_1)=x_1$, $g\circ f(x_2)=x_2$, $x_1\neq x_2$, 所以$g\circ f(x_1)\neq g\circ f(x_2)$. 出现矛盾, 所以$f$是单射. 对于任意$x\in X$, $g\circ f(x)=x$, $\ran g=X$, 所以$g$是满射.
+\end{proof}
+
+\begin{proposition}
+	给定集合$X$和$X$上的函数$f$, $f$是单射当且仅当存在$X$上的函数$g$, 使得$g\circ f=I_X$, 且$g$必然是满射.
+\end{proposition}
+
+\begin{proof}
+	充分性: 如果$g\circ f=I_X$, 那么$f$是单射, $g$是满射.
+	
+	必要性: 如果$X$是空集, 那么$f$是空函数, 任意$X$上的函数$g$也是空函数, 因此$g\circ f=I_x$. 空函数是满射, 所以$g$是满射. 下面考虑$X$不是空集的情况. 任取$x_0\in X$. $f$是单射, $f$是从$X$到$\ran f$的一一映射. 令
+	\begin{equation*}
+		g(x)=
+		\begin{cases}
+			f^{-1}(x), \quad & x\in \ran f\\
+			x_0, & x\notin \ran f.
+		\end{cases}
+	\end{equation*}
+	
+	$g$是$X$上的函数. 对于任意$x\in X$, $g\circ f(x)=x$, 所以$g\circ f=I_X$, $g$是满射. 综合以上两种情况, $g\circ f=I_X$, $g$是满射.
+\end{proof}
+

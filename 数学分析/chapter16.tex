@@ -1,0 +1,234 @@
+\chapter{自然数}
+
+\section{皮亚诺公理}
+皮亚诺公理(Peano axioms), 也称皮亚诺公设(Peano postulates), 是意大利数学家朱塞佩·皮亚诺(Giuseppe Peano)提出的关于自然数的五条公理系统. 根据这五条公理可以建立起一阶算术系统, 也称皮亚诺算术系统.
+
+\begin{definition}
+	给定集合$X$, 对任意集合$x\in X$, 定义$S(x)\coloneqq a\cup \{x\}$.
+\end{definition}
+
+\begin{proposition}
+	给定集合$X$, 如果对于任意$x\in X$, $S(x)\in X$, 那么$S$是$X$上的函数.
+\end{proposition}
+
+\begin{proof}
+	对于任意$x\in X$, 根据配对公理, 存在集合$\{x\}$; 根据并集公理, 存在集合$x\cup \{x\}$. 根据前提, $x\cup \{x\}\in X$. 如果存在$y,y' \in X$, 满足$y=x\cup \{x\}$且$y'=x\cup \{x\}$, 那么对于任意$z\in y$, $z\in y'$, 所以$y\subseteq y'$. 同理, 对于任意$z'\in y'$, $z'\in y$, 所以$y'\subseteq y$. 因此$y=y'$. 综上所述, 对于任意$x\in X$, 有且仅有一个$y\in X$, 满足$y=S(x)$, 所以$S$是$X$上的函数.
+\end{proof}
+
+称$S$为$X$上的后继函数.
+
+\begin{definition}
+	给定集合$X$, 如果$\varnothing \in X$且对于任意$x\in X$, $S(x)\in X$, 则称$X$为归纳集(Induction set).
+\end{definition}
+
+无穷公理确定了至少存在一个归纳集.
+
+\begin{axiom}
+	称满足下面五条公理的集合$\mathbb N$为自然数集:
+	\begin{enumerate}
+		\item $0\in \mathbb N$;
+		\item 如果$n\in \mathbb N$, 则$S(n)\in \mathbb N$;
+		\item 对于任意$n\in \mathbb N$, $S(n)\neq 0$;
+		\item 如果$m\neq n$, 则$S(m)\neq S(n)$;
+		\item 如果$M\subseteq \mathbb N$, 且满足下面的条件:
+			\begin{itemize}
+				\item $0\in M$;
+				\item 如果$n\in M$, 则$S(n)\in M$,
+			\end{itemize}
+			则$M=\mathbb N$.
+	\end{enumerate}
+\end{axiom}
+
+从定义可知, $\mathbb N$是归纳集. 第一条公理确定了自然数的起点. 第二条公理确定了自然数的无限递增能力. 第三条公理和第四条公理确定了自然数从$0$出发构成了一条单向增长的``链'', 不会分叉, 也不会在某个局部或整体上构成一个``环''. 前面四条公理都比较容易理解, 第五条公理是数学归纳法的来源, 它确定了$\mathbb N$是``最小的''归纳集. 考虑到我们还未引入序数的概念, 现在说$\mathbb N$是``最小的''归纳集有些不太不严谨. 如果考虑基数的话, 理论上来说, 一切可数集都是等势的. 所以$\mathbb N$这个``最小的''不是基数意义上的最小. 还有一种说法是, $\mathbb N$是一切归纳集的交集. 这种说法实际上也不太严谨. 无穷公理只是确定了至少存在一个归纳集, 但是它并没有确定所有的归纳集构成一个集合. 因此, 我们也无法对所有的归纳集执行交运算. 严谨的说法是, $\mathbb N$是一切归纳集的子集.
+
+\begin{theorem}
+	根据无穷公理, 存在一个无穷归纳集$S$. 存在唯一的非空归纳集$\omega$, $\omega=\{x\in S\mid \text{对于任意归纳集X, } x\in X\}$.
+\end{theorem}
+
+\begin{proof}
+	定义一元谓词$P(x)$如下: $x$是归纳集. 根据概括公理, 存在集合$X$, $X=\{x\in S\mid \forall y(P(y)\rightarrow x\in y)\}$. $\varnothing \in X$, 所以$X$是非空集. 如果$x\in X$, 那么$\forall y(P(y)\rightarrow x\in y)$. 所以如果$y$是归纳集, $x\in y$, $X\subseteq y$. 根据外延公理, 归纳集$S$的选取不影响$\omega$的唯一性.
+\end{proof}
+
+
+数学归纳法(Principle of Mathematical Induction)源于皮亚诺公理的第五条.
+
+\begin{axiom}[数学归纳法]
+	如果$P$是关于自然数的一个一元谓词, 且满足:
+	\begin{itemize}
+		\item $P(0)$成立;
+	\end{itemize}
+	那么对于任意$n\in \mathbb N$, $P(n)$成立.
+\end{axiom}
+
+\begin{proposition}
+	对于任意$m,n\in \mathbb N$, $m=n\leftrightarrow S(m)=S(n)$.
+\end{proposition}
+
+\begin{proof}
+	充分性: 如果$S(m)=S(n)$, 假设$m\neq n$. 因为$S(m)=m\cup \{m\}$, 所以$m\in S(m)$, $m\in S(n)$. 因此$m\in n$或$m=n$. 根据假设$m\neq n$, 所以$m\in n$. 任意自然数都是传递集, 所以$m\subseteq n$. 同理可证$n\subseteq m$. $m\subseteq n$且$n\subseteq m$, 所以$m=n$, 与假设矛盾. 因此$m=n$.
+
+	必要性: 如果$m=n$, $S$是$\mathbb N$上的函数, 所以$S(m)=S(n)$.
+\end{proof}
+
+\begin{proposition}
+	对于任意$m,n\in \mathbb N$, $m\in n\leftrightarrow S(m)\in S(n)$.
+\end{proposition}
+
+\begin{proof}
+	充分性: 如果对于任意$m,n\in \mathbb N$, $S(m)\in S(n)$. $m\in S(m)$. 因为任意自然数都是传递集, 所以$S(n)$是传递集. 因此$m\in S(n)$. $m\in n$或$m=n$. 如果$m=n$, 那么$S(m)=S(n)$, 与前提矛盾. 所以$m\in n$.
+
+	必要性: 令$S=\{n\in \mathbb N\mid \forall m\in \mathbb N(m\in n\rightarrow S(m)\in S(n))\}$. $\varnothing \in S$. 假设$k\in S$, 即$m\in k\rightarrow S(m)\in S(k)$. 如果$m\in S(k)$, 那么$m\in k$或$m=k$. 如果$m\in k$, 那么$S(m)\in S(k)$. 又$S(k)\in S(S(k))$, 所以$S(m)\in S(S(k))$. 如果$m=k$, 那么$S(m)=S(k)$. 又$S(k)\in S(S(k))$, 所以$S(m)\in S(S(k))$. 所以$S(k)\in S$. 因此对于任意$m,n\in \mathbb N$, $m\in n\rightarrow S(m)\in S(n)$.
+\end{proof}
+
+\begin{proposition}
+	对于任意$n\in \mathbb N$且$n\neq \varnothing$, $\varnothing \in n$.
+\end{proposition}
+
+\begin{proof}
+	令$S'=\{n\in \mathbb N\mid n\neq \varnothing\wedge \varnothing \in n\}$, $S=\{\varnothing\}\cup S'$. $\varnothing \in S$. 假设$k\in S$, 那么$k=\varnothing$或$k\in S'$. 如果$k=\varnothing$, 那么$S(k)=\varnothing \cup \{\varnothing\}=\{\varnothing\}$, 所以$S(k)\neq \varnothing$且$\varnothing \in S(k)$, $S(k)\in S'$, $S(k)\in S$. 如果$k\in S'$, 那么$k\neq \varnothing$且$\varnothing \in k$. $k\in S(k)$, $S(k)$是传递集, 所以$\varnothing \in S(k)$. $k\neq \varnothing$, 所以$S(k)\neq \varnothing$, $S(k)\in S'$, $S(k)\in S$. 对于任意$n\in \mathbb N$, $n \in S$. 如果$n\neq \varnothing$, $n\in S'$. 所以对于任意$n\in \mathbb N$且$n\neq \varnothing$, $\varnothing \in n$.
+\end{proof}
+
+\begin{proposition}
+	对于任意$n\in \mathbb N$且$n\neq \varnothing$, 存在$m\in \mathbb N$, 满足$S(m)=n$. 称$m$为$n$的前驱(Precessor).
+\end{proposition}
+
+\begin{proof}
+	令$S'=\{n\in \mathbb N\mid n\neq \varnothing\wedge \exists m\in \mathbb N(S(m)=n)\}$, $S=\{\varnothing\}\cup S'$. $\varnothing \in S$. 假设$k\in S$, 那么$k=\varnothing$或$k\in S'$. 如果$k=\varnothing$, 那么$S(k)=\varnothing \cup \{\varnothing\}=\{\varnothing\}$. 那么$S(k)\neq \varnothing$, 且存在$\varnothing \in \mathbb N$, $S(\varnothing)=S(k)$. 所以$S(k)\in S'$, $S(k)\in S$. 如果$k\in S'$, 那么$k\neq \varnothing$, 且存在$m\in \mathbb N$, $S(m)=k$. 那么存在$S(m)\in \mathbb N$, $S(S(m))=S(k)$, $S(k)\neq \varnothing$, 所以$S(k)\in S'$, $S(k)\in S$. 对于任意$n\in \mathbb N$, $n \in S$. 如果$n\neq \varnothing$, $n\in S'$. 所以对于任意$n\in \mathbb N$且$n\neq \varnothing$, 存在$m\in \mathbb N$, 满足$S(m)=n$.
+\end{proof}
+
+\section{自然数的序}
+\begin{theorem}
+	任意自然数都是一个传递集.
+\end{theorem}
+
+\begin{proof}
+	根据自然数的定义, $0=\varnothing$, 空集是传递集. 假设$k$是传递集. $S(k)=k\cup \{k\}$. 因为传递集的后继集是传递集, 所以$S(k)$是传递集. 根据数学归纳法, 对于任意$n\in N$, $n$是传递集.
+\end{proof}
+
+\begin{theorem}
+	自然数集$\mathbb N$是一个传递集.
+\end{theorem}
+
+\begin{proof}
+	对于任意$n\in \mathbb N$, 如果$n=0$, 因为$0=\varnothing$, $\varnothing\subseteq \mathbb N$, 所以$n\subseteq \mathbb N$. 如果$n\neq 0$, 那么存在$m\in \mathbb N$, 满足$S(m)=m\cup \{m\}=n$. 对于任意$x\in n$, 可知$x\in m$或$x=m$. 如果$x\in m$, 那么$x\subseteq m$. 又$m\subseteq n$, 所以$x\subseteq n$. 如果$x=m$, 那么$x\subseteq n$. 综合以上两种情况, $x\subseteq n$. 所以如果$n\neq 0$, $\mathbb N$是传递集. 无论$n$是否等于$0$, $\mathbb N$都是传递集, 所以$\mathbb N$是传递集.
+\end{proof}
+
+\begin{definition}
+	在$\mathbb N$上规定二元关系``$\leqslant$''如下: 如果$a,b\in \mathbb N$且$a\subseteq b$, 称$a\leqslant b$.
+\end{definition}
+
+\begin{definition}
+	在$\mathbb N$上规定二元关系``$\geqslant$''如下: 对于任意$a,b\in \mathbb N$, $b\geqslant a$当且仅当$a\leqslant b$.
+\end{definition}
+
+\begin{definition}
+	在$\mathbb N$上规定二元关系``$<$''如下: 对于任意$a,b\in \mathbb N$, $a<b$当且仅当$a\leqslant b$且$a\neq b$.
+\end{definition}
+
+\begin{definition}
+	在$\mathbb N$上规定二元关系``$>$''如下: 对于任意$a,b\in \mathbb N$, $b>a$当且仅当$a<b$.
+\end{definition}
+
+根据定义可知, 对于任意$a,b\in \mathbb N$, 如果$a<b$, $a\leqslant b$; 如果$a\leqslant b$, 要么$a<b$, 要么$a=b$, 两者必居其一; 如果$a>b$, 那么$a\geqslant b$; 如果$a\geqslant b$, 要么$a>b$, 要么$a=b$, 两者必居其一.
+
+\begin{proposition}
+	给定自然数$a,b\in \mathbb N$, 如果$a\leqslant b$, 且$b\neq \varnothing$, 那么$a\in b$.
+\end{proposition}
+
+\begin{proof}
+	 令$S=\{a\in \mathbb N\mid \forall b\in \mathbb N(a\leqslant b\wedge b\neq \varnothing \rightarrow a\in b\}$. 如果$a=\varnothing$, 因为$b\neq \varnothing$, 所以$a\in b$. 因此$\varnothing \in S$. 如果$a=k\in S$, 那么$k\leqslant b\wedge b\neq \varnothing \rightarrow k\in b$. 当$a=S(k)$时, 如果$S(k)\leqslant b$, 那么$S(k)\subseteq b$. 对于任意$x\in S(k)$, $x\in b$或$x=k$. 如果$x\in k$, 那么$S(k)\subseteq b$.
+\end{proof}
+
+\begin{proposition}
+	给定自然数$a,b\in \mathbb N$, $a\leqslant b$当且仅当$S(a)\leqslant S(b)$.
+\end{proposition}
+
+\begin{proof}
+	充分性: 如果$S(a)\leqslant S(b)$, 那么$S(a)\subseteq S(b)$. 对于任意$x\in a$, 因为$a\in S(a)$, $S(a)$是传递集, 所以$x\in S(a)$. 因为$S(a)\subseteq S(b)$, 所以$x\in S(b)$. 那么$x\in b$或$x=b$. 如果$x\in b$, $a\subseteq b$, $a\leqslant b$. 如果$x=b$, $b\in a$, $S(b)\in S(a)$. 所以$S(b)\subseteq S(a)$, $S(a)=S(b)$, $a=b$, $a\subseteq b$, $a\leqslant b$. 综合以上的情况, $a\leqslant b$.
+
+	必要性: 令$S=\{b\in \mathbb N\mid \forall a\in \mathbb N(a\leqslant b\rightarrow S(a)\leqslant S(b))\}$. 如果$\varnothing \in S$, $a\leqslant \varnothing$, $a\subseteq \varnothing$, $a=\varnothing$. $a=\varnothing$, $b=\varnothing$, 所以$S(a)=S(b)$, $S(a)\subseteq S(b)$, $S(a)\leqslant S(b)$. 所以$\varnothing \in S$. 假设$k\in S$, 即$a\leqslant k\rightarrow S(a)\leqslant S(k)$. 如果$a\leqslant S(k)$, 那么$a\subseteq S(k)$. 对于任意$x\in S(a)$, $x\in a$或$x=a$. 如果$x\in a$, 又$a\subseteq S(k)$, 那么$x\in S(k)$. $S(k)\in S(S(k))$, $S(S(k))$是传递集, 所以$x\in S(S(k))$. $S(a)\subseteq S(S(k))$. $S(a)\leqslant S(S(k))$. 如果$x=a$, 又$a\leqslant S(k)$, 所以$x\leqslant S(k)$, $x\subseteq S(k)$. $S(k)\in S(S(k))$, 所以$S(k)\subseteq S(S(k))$. 所以$x\subseteq S(S(k))$. $S(a)\subseteq S(S(k))$, $S(a)\leqslant S(S(k))$.
+
+	因此对于任意$m,n\leqslant \mathbb N$, $m\in n$当且仅当$S(m)\leqslant S(n)$.
+\end{proof}
+
+\begin{proposition}
+	给定自然数$a,b\in \mathbb N$, 如果$a<b$, 那么$S(a)\leqslant b$.
+\end{proposition}
+
+\begin{proof}
+	令$S=\{b\in \mathbb N\mid \forall a\in \mathbb N(a<b\rightarrow S(a)\leqslant b)\}$. $\varnothing \in S$. 假设$k\in S$, 即对于任意$a,b\in \mathbb N$, 如果$a<k$, 那么$S(a)\leqslant b$. 如果$a<S(k)$, 那么$a\leqslant S(k)$. 因为$S(k)\neq \varnothing$, 所以如果$a\in S(k)$. 那么$a\in k$或者$a=k$. 如果$a\in k$, 那么$S(a)\in S(k)$, $S(k)$是传递集, 所以$S(a)\subseteq S(k)$. 如果$a=k$, 那么$S(a)=S(k)$. 综合以上两种情况, $S(a)\subseteq S(k)$, 也即$S(a)\leqslant S(k)$. 所以$S(k)\in S$. 所以对于任意$b\in \mathbb N$, $b\in S$. 所以给定自然数$a,b\in \mathbb N$, 如果$a<b$, 那么$S(a)\leqslant b$.
+\end{proof}
+
+下面的定理称为自然数的三歧性(trichotomy).
+\begin{theorem}[自然数的三歧性]
+	对于任意$a,b\in \mathbb N$, $a<b$, $a=b$, $a>b$有且仅有一个成立.
+\end{theorem}
+
+\begin{proof}
+	首先证明以上三个关系至少有一个成立. 对$a$使用归纳法. 当$a=0$时, 由于空集是任意集合的子集, 所以$a\leqslant b$, 即$a<b$或$a=b$至少有一个成立, 那么以上三个关系至少有一个成立. 设当$a=k$时, 以上三个关系至少有一个成立, 即$k<b$, $k=b$, $k>b$中至少有一个成立. 下面考虑当$a=S(k)$时的情况. 如果$k<b$, 那么$S(k)\leqslant b$. 如果$k=b$, 因为$k\subseteq S(k)$, 那么$b\subseteq S(k)$, 即$b\leqslant S(k)$. 如果$k>b$, 那么$b<k$, $b\leqslant k$, $b\subseteq k$, 又$k\subseteq S(k)$, 所以$b\subseteq S(k)$, 即$b\leqslant S(k)$. 以上情况, 三个关系至少有一个成立.
+
+	其次证明以上三个关系至多有一个成立. 如果$a<b$且$a=b$, 从$a<b$可知$a\neq b$, 出现矛盾. 如果$a<b$且$a>b$, 那么$a\subseteq b$且$b\subseteq a$, 所以$a=b$. 从$a<b$可知$a\neq b$, 出现矛盾. 如果$a=b$且$a>b$, 从$a<b$可知$a\neq b$, 出现矛盾.
+
+	因此以上三个关系有且仅有一个成立. 
+\end{proof}
+
+\begin{theorem}
+	$\mathbb N$上的二元关系``$\leqslant$''是全序关系.
+\end{theorem}
+
+\begin{proof}
+	对于任意$a\in \mathbb N$, $a\subseteq a$, 所以$a\leqslant a$. ``$\leqslant$''满足自反性.
+	
+	对于任意$a,b\in \mathbb N$, 如果$a\leqslant b$且$b\leqslant a$, 那么$a\subseteq b$且$b\subseteq a$, 所以$a=b$. ``$\leqslant$''满足对称性.
+	
+	对于任意$a,b,c\in \mathbb N$, 如果$a\leqslant b$且$b\leqslant c$, 那么$a\subseteq b$且$b\subseteq c$, $a\subseteq c$, 所以$a\leqslant c$. ``$\leqslant$''满足传递性.
+
+	对于任意$a,b\in \mathbb N$, $a<b$, $a=b$, $a>b$有且仅有一个成立. 如果$a<b$, 那么$a\leqslant b$. 如果$a=b$, 那么$a\leqslant b$. 如果$a>b$, 那么$b<a$, $b\leqslant a$. ``$\leqslant$''满足完全性.
+	所以$\mathbb N$上的二元关系``$\leqslant$''是全序关系.
+\end{proof}
+
+
+\begin{theorem}
+	$\mathbb N$是良序集.
+\end{theorem}
+
+\begin{proof}
+	给定$\mathbb N$的任意非空子集$S$. 设$P$是关于自然数$n$的谓词, 表示$n$是$S$的下界. 设$M=\{n\in \mathbb N\mid P(n)\}$. 只要证明$M\cap S$是非空集, 就能证明$S$有最小值.
+
+	假设$M\cap S$是空集. 对于任意$x\in S$, $\varnothing \subseteq x$, $\varnothing \leqslant x$, 所以$\varnothing \in M$. 假设$k\in M$, 那么$k\leqslant x$且$k\notin S$. 所以$k\neq x$, $k<x$. 因此$S(k)\leqslant x$, $S(k)\in M$. 对于任意$n\in \mathbb N$, $n\in M$, $n\notin S$. $S$为空集, 与前提矛盾. 因此$M\cap S$不是空集. 由外延公理可知, $M\cap S$就是$S$上的最小元, 且是唯一的.
+
+	$\mathbb N$是全序集, 任意非空子集有最小值, 所以$\mathbb N$是良序集.
+\end{proof}
+
+从数学归纳法可以推出第二数学归纳法(The Second Principle of Mathematical Induction).
+
+\begin{proposition}
+	如果$P$是关于自然数的一个一元谓词, 且满足:
+	\begin{itemize}
+		\item $P(0)$不成立;
+		\item 对于任意$k\in \mathbb N$, 如果$P(k)$不成立, 那么$P(S(k))$不成立,
+	\end{itemize}
+	那么对于任意$n\in \mathbb N$, $P(n)$不成立.
+\end{proposition}
+
+\begin{proof}
+	对于任意$n\in \mathbb N$, 规定关于自然数的一元谓词$Q(n)=\neg P(n)$. 那么:
+	\begin{itemize}
+		\item $Q(0)$成立;
+		\item 对于任意$k\in \mathbb N$, 如果$Q(k)$成立, 那么$Q(S(k))$成立.
+	\end{itemize}
+	根据数学归纳法可知, 对于任意$n\in \mathbb N$, $Q(x)$成立, 所以$P(n)$不成立.
+\end{proof}
+
+\begin{theorem}[第二数学归纳法]
+	如果$P$是关于自然数的一个一元谓词, 且满足:
+	\begin{itemize}
+		\item $P(0)$成立;
+		\item 对于任意$x\in \mathbb N$, 如果当$x<k$时$P(x)$都成立, 那么$P(k)$成立,
+	\end{itemize}
+	那么对于任意$n\in \mathbb N$, $P(n)$成立.
+\end{theorem}
+
+\begin{proof}
+	令$S=\{n\in \mathbb N\mid \neg P(x)\}$. 假设$S$不为空集. $S$是$\mathbb N$的非空子集, $N$是良序集, 因此$S$上有最小值$m$, $\neg P(m)$成立, 即$P(m)$不成立. 那么对于任意$n\in \mathbb N$且$0\leqslant n<m$, $P(n)$成立. 根据假设, $P(m)$成立, 与前面的结论矛盾. 所以$S$为空集. 那么对于任意对于任意$n\in \mathbb N$,  $\neg P(n)$不成立, $P(n)$成立.
+\end{proof}
